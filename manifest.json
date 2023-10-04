@@ -1,0 +1,11 @@
+{
+    "name": "Genealogy Helper",
+    "version": "1.0.0",
+    "description": "An extension that allows for seamless web navigation between the numerous genealogical sites.",
+    "manifest_version": 3,
+    "author": "Zach Gentner",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Genealogy"
+    }
+}
