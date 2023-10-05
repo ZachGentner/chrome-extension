@@ -12,6 +12,7 @@
     <main>
         <div id="info" class="container">
             <div id="profile">
+                <!-- <img src="https://gravatar.com/userimage/79746757/3c912a1d5fb907c633bfb0842725cf2a.jpeg?size=256" alt=""> -->
                 <i class="fa-regular fa-user fa-lg"></i>
             </div>
             <h1 id="name">David D. Davidson</h1>
@@ -50,32 +51,58 @@
         </form>
 
         <div id="toolbar">
+            <!-- EDIT WILL ALLOW USERS TO MANUALLY EDIT AND SAVE DETAILS ABOUT THE ACTIVE ANCESTOR -->
+            <button id="edit" title="Edit">
+                <a class="link" href="index.html">                
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </a>
+            </button>
+
+            <!-- SOURCES WILL ALLOW USERS TO CLIP URLS AND ATTACH THEM TO ANCESTORS FOR FUTURE REFERENCE -->
+            <button id="sources"  title="Sources">
+                <a class="link" href="index.html">                
+                    <i class="fa-solid fa-box-archive"></i>
+                </a>
+            </button>
+            <!-- PHOTOS WILL ALLOW USERS TO CLIP PHOTO URLS AND ATTACH THEM TO ANCESTORS FOR FUTURE REFERENCE -->
+            <button id="photos" title="Photos">
+                <a class="link" href="index.html">                
+                    <i class="fa-regular fa-image"></i>
+                </a>
+            </button>
+            <!-- TASKS WILL ALLOW USERS TO RECORD AND MANAGE TODO ITEMS FOR EACH ANCESTOR -->
+            <button id="tasks" title="Tasks">
+                <a class="link" href="index.html">
+                    <i class="fa-solid fa-list-check"></i>
+                </a>
+            </button>
+            <!-- TASKS WILL ALLOW USERS TO RECORD AND MANAGE TODO ITEMS FOR EACH ANCESTOR -->
+            <button id="notes" title="Notes">
+                <a class="link" href="index.html">
+                    <!-- <i class="fa-regular fa-note-sticky"></i> -->
+                    <i class="fa-regular fa-clipboard"></i>
+                </a>
+            </button>
+            <!-- REPORTS WILL ALLOW USERS TO GENERATE MEANINGFUL DATA BASED ON THE INFORMATION CURRENTLY ENTERED FOR THEIR ANCESTORS -->
+            <button id="reports" title="Reports">
+                <a class="link" href="index.html">                
+                    <i class="fa-solid fa-chart-pie"></i>
+                </a>
+            </button>
+            <!-- WEBSEARCH WILL ALLOW USERS TO SEARCH NUMEROUS GENEALOGY WEBSITES FOR THE ACTIVE ANCESTOR WITH THE CLICK OF A BUTTON -->
+            <button id="websearch" title="Web Search">
+                <a class="link" href="">                
+                    <i class="fa-solid fa-globe"></i>
+                </a>
+            </button>
             <!-- SETTINGS WILL ALLOW USERS TO CHANGE FUNCTIONALITY OF THE WEB UTILITY -->
-            <button id="settings">
+            <button id="settings" title="Settings">
                 <a class="link" href="./settings.html">                
                     <i class="fa-solid fa-gear"></i>
                 </a>
             </button>
-            <!-- SOURCES WILL ALLOW USERS TO CLIP URLS AND ATTACH THEM TO ANCESTORS FOR FUTURE REFERENCE -->
-            <button id="sources">
-                <a class="link" href="" target="_blank">                
-                    <i class="fa-solid fa-box-archive"></i>
-                </a>
-            </button>
-            <!-- SOURCES WILL ALLOW USERS TO CLIP URLS AND ATTACH THEM TO ANCESTORS FOR FUTURE REFERENCE -->
-            <button id="photos">
-                <a class="link" href="" target="_blank">                
-                    <i class="fa-regular fa-image"></i>
-                </a>
-            </button>
-            <!-- EDIT WILL ALLOW USERS TO MANUALLY EDIT AND SAVE DETAILS ABOUT THEIR ANCESTOR -->
-            <button id="edit">
-                <a class="link" href="" target="_blank">                
-                    <i class="fa-solid fa-up-right-from-square"></i>
-                </a>
-            </button>
             <!-- LOG OUT WILL ALLOW USERS TO SIGN OUT OF THE WEB APPLICATION AND RETURN TO THE SIGN IN MENU -->
-            <button id="logout">
+            <button id="logout" title="Logout">
                 <a class="link" href="signin.html">                
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </a>

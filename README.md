@@ -85,7 +85,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://www.zachgentner.com/)
 
-Rootwise is a Google Chrome extension that allows users to save links to
+Rootwise is a Google Chrome extension that allows genealogy researchers to quickly navigate to different web sources for each ancestor.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

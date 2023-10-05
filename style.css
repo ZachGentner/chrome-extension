@@ -61,6 +61,10 @@ a {
     box-shadow: 1px 1px 4px 2px rgb(0, 0, 0, .5);
 }
 
+#profile img {
+    border-radius: 100px;
+}
+
 #name {
     margin-left: 12px;
     font-size: 13px;
