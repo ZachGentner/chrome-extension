@@ -12,27 +12,78 @@ const src = {
         defaultUrl: 'https://www.findagrave.com',
         id: '1057635',
     },
-}
+};
 
- const ids = {
+const ids = {
     1:{
-        first: "Julius",
-        middle: "",
-        surname: "Caesar",
-        ancestry: "",
-        familysearch: "",
-        findagrave: "7181",
+        first: "Zachary",
+        middle: "Norman",
+        surname: "Gentner",
+        birth: "1992",
+        death: "",
+        ancestry: "352320388648",
+        familysearch: "L2Y8-T2J",
+        findagrave: "",
         links: {},
     },
     2:{
-        first: "Louis",
-        middle: "Napoleon",
-        surname: "Bonaparte",
-        ancestry: "",
-        familysearch: "",
-        findagrave: "7414"
+        first: "Todd",
+        middle: "William",
+        surname: "Gentner",
+        birth: "1965",
+        death: "2021",
+        ancestry: "352320388658",
+        familysearch: "L2YL-R5W",
+        findagrave: "232743360"
     },
-}
+    3:{
+        first: "Debra",
+        middle: "Diane",
+        surname: "Gentner",
+        maiden: "Chatfield",
+        birth: "1967",
+        death: "",
+        ancestry: "352320388669",
+        familysearch: "L2YL-RYV",
+        findagrave: "242621477",
+    },
+    4:{
+        first: "Norman",
+        middle: "Russell",
+        surname: "Gentner",
+        maiden: "",
+        ancestry: "352320388755",
+        familysearch: "L2YL-YL7",
+        findagrave: "175284135",
+    },
+    5:{
+        first: "Betty",
+        middle: "Rae",
+        surname: "Gentner",
+        maiden: "Helm",
+        ancestry: "352320388741",
+        familysearch: "L2YX-JLJ",
+        findagrave: "36924455",
+    },
+    6:{
+        first: "Robert",
+        middle: "Dennis",
+        surname: "Chatfield",
+        maiden: "",
+        ancestry: "352320388711",
+        familysearch: "L2YL-TSW",
+        findagrave: "242408188",
+    },
+    7:{
+        first: "Diane",
+        middle: "Joyce",
+        surname: "Chatfield",
+        maiden: "MacKenzie",
+        ancestry: "352320388725",
+        familysearch: "L2YL-TQ5",
+        findagrave: "220745410",
+    },
+};
 
 //HOMEPAGE FUNCTIONS. DEFAULT LINKS TO COMMONLY USED NAVIGATION PAGES.
 export function getHomepage(website) {
@@ -47,7 +98,7 @@ export function getHomepage(website) {
     if (website.toLowerCase() === 'findagrave') {
         return `https://www.findagrave.com/virtual-cemetery/${src.findagrave.id}`; 
     }
-}
+};
 
 //GENERATE URLS
 export function getUrl(website, person) {
@@ -73,13 +124,13 @@ export function getUrl(website, person) {
             return src.findagrave.defaultUrl;
         }
     }
-}
+};
 
 export function getDefaultUrl(website) {
     if(src[website].defaultUrl) {
         return src[website].defaultUrl;
     }
-}
+};
 
 //FIND PEOPLE IN DATABASE
 export function findByName(name) {
@@ -96,31 +147,23 @@ export function findById(id) {
     }
 };
 
-function getAllNames(){
+function getAllNames(){//FOR SEARCH FEATURE
     Object.keys(ids).forEach(id => {
         console.log(getFullName(ids[id]));
     })
-}
-
-//SEARCH ONLINE RESOURCES
-// function search(website, person) {
-//     if (website.toLowerCase() === 'ancestry') {
-         
-//     }
-//     if (website.toLowerCase() === 'familysearch') {
-        
-//     }
-//     if (website.toLowerCase() === 'findagrave') {
-
-//     }
-// }
+};
 
 //NAME FUNCTIONS
 export function getFullName(person) {
     let middleInitial = person.middle ? `${person.middle[0]}. ` :  "";
-    let maidenName = person.maiden ? ` (${person.maiden}) ` :  "";
+    let maidenName = person.maiden ? `(${person.maiden}) ` :  "";
 
     return `${person.first} ${middleInitial}${maidenName}${person.surname}`;
-}
+};
 
-getAllNames();
+//DATE FUNCTIONS
+function getLifespan(person){
+    if(person.birth || person.death) {
+        console.log(`${person.birth} - ${person.death}`);
+    }
+};

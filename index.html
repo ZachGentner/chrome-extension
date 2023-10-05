@@ -12,7 +12,7 @@
     <main>
         <div id="info" class="container">
             <div id="profile">
-                <i class="fa-regular fa-user fa-xl"></i>
+                <i class="fa-regular fa-user fa-lg"></i>
             </div>
             <h1 id="name">David D. Davidson</h1>
         </div>
@@ -26,13 +26,13 @@
             
             <button id="familysearch">
                 <a class="link" href="https://www.familysearch.org" target="_blank">                
-                    <img src="img/familysearch.svg" alt="Familysearch.com quicklink icon">
+                    <img src="img/familysearch.png" alt="Familysearch.com quicklink icon">
                 </a>
             </button>
 
             <button id="findagrave">
                 <a class="link" href="https://www.findagrave.com" target="_blank">                
-                    <img src="img/findagrave.svg" alt="Findagrave.com quicklink button">
+                    <img src="img/findagrave.png" alt="Findagrave.com quicklink button">
                 </a>
             </button>
 
@@ -41,21 +41,47 @@
             </button> -->
 
         </div>
+        
+        <form id="search" action="submit">
+            <button id="test">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <input id="input" type="text" autocomplete="off">
+        </form>
 
         <div id="toolbar">
+            <!-- SETTINGS WILL ALLOW USERS TO CHANGE FUNCTIONALITY OF THE WEB UTILITY -->
             <button id="settings">
-                <a class="link" href="https://www.findagrave.com" target="_blank">                
+                <a class="link" href="./settings.html">                
                     <i class="fa-solid fa-gear"></i>
                 </a>
             </button>
-            <button id="upload">
-                <a class="link" href="https://www.findagrave.com" target="_blank">                
-                    <i class="fa-solid fa-file-import"></i>
+            <!-- SOURCES WILL ALLOW USERS TO CLIP URLS AND ATTACH THEM TO ANCESTORS FOR FUTURE REFERENCE -->
+            <button id="sources">
+                <a class="link" href="" target="_blank">                
+                    <i class="fa-solid fa-box-archive"></i>
                 </a>
             </button>
-            <input type="number" id="input" style="width: 30px">
-            <button id="test" style="height: 25px; width: 25px;"></button>
+            <!-- SOURCES WILL ALLOW USERS TO CLIP URLS AND ATTACH THEM TO ANCESTORS FOR FUTURE REFERENCE -->
+            <button id="photos">
+                <a class="link" href="" target="_blank">                
+                    <i class="fa-regular fa-image"></i>
+                </a>
+            </button>
+            <!-- EDIT WILL ALLOW USERS TO MANUALLY EDIT AND SAVE DETAILS ABOUT THEIR ANCESTOR -->
+            <button id="edit">
+                <a class="link" href="" target="_blank">                
+                    <i class="fa-solid fa-up-right-from-square"></i>
+                </a>
+            </button>
+            <!-- LOG OUT WILL ALLOW USERS TO SIGN OUT OF THE WEB APPLICATION AND RETURN TO THE SIGN IN MENU -->
+            <button id="logout">
+                <a class="link" href="signin.html">                
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </button>
         </div>
+
 
     </main>
     

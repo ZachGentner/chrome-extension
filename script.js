@@ -9,13 +9,17 @@ import * as ui from './ui.mjs';
 //VARIABLE DECLARATIONS
 const info = document.getElementById('info');
 const quicklinks = document.getElementById('quicklinks');
-const toolbar = document.getElementById('toolbar');
+const search = document.getElementById('search');
 const input = document.getElementById('input')
 let active = data.findById(1);
 
 //TARGETS
-toolbar.querySelector('#test').addEventListener('mousedown', () => {
+window.addEventListener('load', () => {changeActive(1) ? active = changeActive(1) : active = undefined;}); //Changes default
+
+search.addEventListener('submit', (e) => {
+    e.preventDefault()
     changeActive(input.value)
+    input.value = '';
 })
 
 
@@ -32,7 +36,7 @@ function updateLinks(){
     //Diable all links if active person does not exist or is null.
 
 
-    if (quicklinks.querySelector('#ancestry') !== null && active.ancestry !== '') {
+    if (quicklinks.querySelector('#ancestry') !== null && active != undefined && active.ancestry !== '') {
         quicklinks.querySelector('#ancestry').querySelector("a").href = data.getUrl("ancestry", active);
         quicklinks.querySelector('#ancestry').disabled = false;
     } else {
@@ -40,7 +44,7 @@ function updateLinks(){
         quicklinks.querySelector('#ancestry').disabled = true;
     }
 
-    if (quicklinks.querySelector('#familysearch') !== null && active.familysearch !== '') {
+    if (quicklinks.querySelector('#familysearch') !== null && active != undefined && active.familysearch !== '') {
         quicklinks.querySelector('#familysearch').querySelector("a").href = data.getUrl("familysearch", active);
         quicklinks.querySelector('#familysearch').disabled = false;
     } else {
@@ -48,7 +52,7 @@ function updateLinks(){
         quicklinks.querySelector('#familysearch').disabled = true;
     }
 
-    if (quicklinks.querySelector('#findagrave') !== null && active.findagrave !== '') {
+    if (quicklinks.querySelector('#findagrave') !== null && active != undefined && active.findagrave !== '') {
         quicklinks.querySelector('#findagrave').querySelector("a").href = data.getUrl("findagrave", active);
         quicklinks.querySelector('#findagrave').disabled = false;
     } else {
@@ -62,10 +66,14 @@ function updateLinks(){
 }
 
 function changeActive(id) {
-    active = data.findById(id);
+    if(data.findById(id)) {
+        active = data.findById(id);
+    } else {
+        active = undefined;
+    }
     updateName();
     updateLinks();
     console.log(active)
 }
 
-changeActive(1);
+// changeActive(1);
