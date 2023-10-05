@@ -121,6 +121,16 @@ a {
 
 
 /* TOOLBAR */
+#toolbar {
+    height: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#toolbar button {
+    width: 25px;
+}
+
 #logout:hover {
     background-color: var(--primary);
     border-radius: 3px;
