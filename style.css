@@ -31,6 +31,7 @@ main {
 
 img {
     width: 100%;
+    z-index: 10;
 }
 
 a {
@@ -47,6 +48,7 @@ a {
     text-align: center;
     background-color: var(--dark);
     color: white;
+    font-size: 10px;
 }
 
 #profile {
@@ -66,9 +68,16 @@ a {
 }
 
 #name {
-    margin-left: 12px;
+    margin: 0 0 2px 12px;
     font-size: 13px;
     font-weight: 600;
+    flex-grow: 1;
+    text-align: left;
+}
+
+#lifespan {
+    margin-left: 12px;
+    text-align: left;
 }
 
 #quicklinks {
@@ -109,7 +118,7 @@ a {
     flex-grow: 1;
 }
 
-#test {
+#submit {
     line-height: 1.5rem;
     width: 1.7rem;
     border-radius: 15px 0 0 15px;

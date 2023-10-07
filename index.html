@@ -4,24 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genealogy Helper</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <main>
+<!-- INFORMATION -->
         <div id="info" class="container">
             <div id="profile">
                 <!-- <img src="https://gravatar.com/userimage/79746757/3c912a1d5fb907c633bfb0842725cf2a.jpeg?size=256" alt=""> -->
                 <i class="fa-regular fa-user fa-lg"></i>
             </div>
-            <h1 id="name">David D. Davidson</h1>
+            <div style="flex-grow: 1;">
+                <h1 id="name">Firstname M. Surname</h1>
+                <p id="lifespan">1800-1900</p>
+            </div>
+            <p id="id">ID:</p>
         </div>
 
         <!-- <div style="background-color: white; margin: -10px; display: flex; justify-content: center;">
             <i class="fa-solid fa-chevron-down"></i>
         </div> -->
 
+<!-- QUICKLINKS -->
         <div id="quicklinks">
             <button id="ancestry">
                 <a class="link" href="https://www.ancestry.com" target="_blank">                
@@ -40,20 +50,17 @@
                     <img src="img/findagrave.png" alt="Findagrave.com quicklink button">
                 </a>
             </button>
-
-            <!-- <button id="links">               
-                <i class="fa-solid fa-link"></i>
-            </button> -->
-
         </div>
         
+<!-- SEARCHBAR -->
         <form id="search" action="submit">
-            <button id="test">
+            <button id="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
             <input id="input" type="text" autocomplete="off">
         </form>
 
+<!-- TOOLBAR -->
         <div id="toolbar">
             <!-- EDIT WILL ALLOW USERS TO MANUALLY EDIT AND SAVE DETAILS ABOUT THE ACTIVE ANCESTOR -->
             <button id="edit" title="Edit">
@@ -112,8 +119,6 @@
                 </a>
             </button>
         </div>
-
-
     </main>
     
     <script type="module" src="script.js"></script>
