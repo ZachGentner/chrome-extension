@@ -1,17 +1,17 @@
 {
-    "name": "Genealogy Helper",
-    "version": "1.0.0",
-    "description": "An extension that allows for seamless web navigation between the numerous genealogical sites.",
-    "manifest_version": 3,
-    "author": "Zach Gentner",
-    "action": {
-        "default_popup": "index.html",
-        "default_title": "Genealogy",
-        "default_icon": {
-            "16": "img/favicon/favicon-16x16.png",
-            "32": "img/favicon/favicon-32x32.png",
-            "48": "img/favicon/favicon-32x32.png",
-            "128": "img/favicon/favicon-32x32.png"
-        }
+  "name": "Genealogy Helper",
+  "version": "1.0.0",
+  "description": "An extension that allows for seamless web navigation between the numerous genealogical sites.",
+  "manifest_version": 3,
+  "author": "Zach Gentner",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Genealogy",
+    "default_icon": {
+      "16": "img/favicon/favicon-16x16.png",
+      "32": "img/favicon/favicon-32x32.png",
+      "48": "img/favicon/favicon-32x32.png",
+      "128": "img/favicon/favicon-32x32.png"
     }
+  }
 }

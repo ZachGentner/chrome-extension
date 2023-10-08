@@ -1,5 +1,7 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+
 <a name="readme-top"></a>
+
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -7,8 +9,6 @@
 *** Don't forget to give the project a star!
 *** Thanks again! Now go create something AMAZING! :D
 -->
-
-
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -18,14 +18,13 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -49,8 +48,6 @@
     <a href="https://github.com/zachgentner/chrome-extension/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS
 <details>
@@ -78,30 +75,26 @@
   </ol>
 </details> -->
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://www.zachgentner.com/)
+[![Product Name Screen Shot][product-screenshot]](https://repository-images.githubusercontent.com/699593070/9c9d9e25-3512-43cc-9154-7f53bdedef92)
 
 Rootwise is a Google Chrome extension that allows genealogy researchers to quickly navigate to different web sources for each ancestor.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 ### Built With
 
-* [![HTML5][HTML.com]][HTML-url]
-* [![CSS3][CSS.com]][CSS-url]
-* [![JavaScript][JavaScript.com]][JavaScript-url]
+- [![HTML5][HTML.com]][HTML-url]
+- [![CSS3][CSS.com]][CSS-url]
+- [![JavaScript][JavaScript.com]][JavaScript-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
@@ -120,18 +113,16 @@ TODO.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 TODO
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
 - [ ] Add a navigation input to quickly switch back and forth between ancestors.
@@ -142,9 +133,8 @@ See the [open issues](https://github.com/zachgentner/tictactoe/issues) for a ful
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -160,18 +150,16 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Your Name - [@zach_gentner](https://twitter.com/zach_gentner) - zach.gentner@gmail.com
@@ -180,10 +168,9 @@ Project Link: [https://github.com/zachgentner/tictactoe](https://github.com/zach
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/zachgentner/tictactoe.svg?style=for-the-badge
 [contributors-url]: https://github.com/zachgentner/tictactoe/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/zachgentner/tictactoe.svg?style=for-the-badge

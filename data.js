@@ -14,14 +14,43 @@ const src = {
     },
 };
 
+class Person {
+    first;
+    middle;
+    surname;
+    sex;
+    birth;
+    death;
+    photo;
+    links;
+    ancestry;
+    familysearch;
+    findagrave;
+
+    constructor(first, surname) {
+        this.first = first;
+        this.middle = '';
+        this.surname = surname;
+        this.sex = '';
+        this.birth = '';
+        this.death = '';
+        this.photo = '';
+        this.links = [];
+        this.ancestry = '';
+        this.familysearch = '';
+        this.findagrave = '';
+    }
+}
+
 const ids = {
     1: {
         first: 'Zachary',
         middle: 'Norman',
         surname: 'Gentner',
         birth: '1992',
-        death: '',
-        photo: 'https://gravatar.com/userimage/79746757/3c912a1d5fb907c633bfb0842725cf2a.jpeg?size=256',
+        death: 'Living',
+        photo:
+      'https://gravatar.com/userimage/79746757/3c912a1d5fb907c633bfb0842725cf2a.jpeg?size=256',
         ancestry: '352320388648',
         familysearch: 'L2Y8-T2J',
         findagrave: '',
@@ -33,6 +62,8 @@ const ids = {
         surname: 'Gentner',
         birth: '1965',
         death: '2021',
+        photo:
+      'https://tributecenteronline.s3-accelerate.amazonaws.com/Obituaries/25770932/Thumbnail.jpg',
         ancestry: '352320388658',
         familysearch: 'L2YL-R5W',
         findagrave: '232743360',
@@ -86,6 +117,8 @@ const ids = {
     },
 };
 
+const active = ids[1];
+
 // HOMEPAGE FUNCTIONS. DEFAULT LINKS TO COMMONLY USED NAVIGATION PAGES.
 export function getHomepage(website) {
     if (website.toLowerCase() === 'ancestry') {
@@ -101,7 +134,7 @@ export function getHomepage(website) {
     }
 }
 
-// GENERATE URLS
+// URL FUNCTIONS
 export function getUrl(website, person) {
     if (website.toLowerCase() === 'ancestry') {
         if (src.ancestry.id !== undefined && person.ancestry !== '') {
@@ -124,24 +157,23 @@ export function getUrl(website, person) {
 }
 
 export function getDefaultUrl(website) {
-    if (src[website].defaultUrl) {
-        return src[website].defaultUrl;
-    }
+    return src[website.toLowerCase()].defaultUrl;
 }
 
-// FIND PEOPLE IN DATABASE
+// DATABASE FUNCTIONS
+export function activePerson() {
+    return src.active;
+}
+
 export function findByName(name) {
     Object.keys(ids).forEach((id) => {
-        if (ids[id].name === name) {
-            return ids[id];
-        }
+        if (ids[id].name === name) { return ids[id]; }
     });
+    return undefined;
 }
 
 export function findById(id) {
-    if (ids[id] !== undefined) {
-        return ids[id];
-    }
+    return ids[id];
 }
 
 export function findId(person) {
@@ -149,13 +181,36 @@ export function findId(person) {
     return keys.find((key) => ids[key] === person);
 }
 
-function getAllNames() { // FOR SEARCH FEATURE
-    Object.keys(ids).forEach((id) => {
-        console.log(getFullName(ids[id]));
-    });
+function addPerson(person) {
+    if (person.constructor.name === 'Person') { ids[Object.keys(ids).length + 1] = person; }
+}
+
+function swapIds(person1, person2) {
+    ids[findId(person1)] = person2;
+    ids[findId(person2)] = person1;
 }
 
 // NAME FUNCTIONS
+export function getFirstName(person) {
+    if (person.first) { return person.first; }
+    return undefined;
+}
+
+export function getMiddleName(person) {
+    if (person.middle) { return person.middle; }
+    return undefined;
+}
+
+export function getSurame(person) {
+    if (person.surname) { return person.surname; }
+    return undefined;
+}
+
+export function getMaidenName(person) {
+    if (person.maiden) { return person.maiden; }
+    return undefined;
+}
+
 export function getFullName(person) {
     const middleInitial = person.middle ? `${person.middle[0]}. ` : '';
     const maidenName = person.maiden ? `(${person.maiden}) ` : '';
@@ -164,19 +219,17 @@ export function getFullName(person) {
 }
 
 // DATE FUNCTIONS
-export function getLifespan(person) {
-    if (person.birth || person.death) {
-        console.log(`${person.birth} - ${person.death}`);
-        return `${person.birth} - ${person.death}`;
-    }
+export function getBirthYear(person) {
+    if (person.birth) { return `${person.birth}`; }
+    return undefined;
 }
 
-function searchNames() {
-    Object.keys(ids).forEach((id) => {
-        console.log(ids[id].surname);
-    });
+export function getDeathYear(person) {
+    if (person.death) { return `${person.death}`; }
+    return undefined;
 }
 
 export function getPhoto(person) {
     if (person.photo) { return person.photo; }
+    return undefined;
 }

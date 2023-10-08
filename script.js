@@ -14,7 +14,9 @@ const input = document.getElementById('input');
 let active = data.findById(1);
 
 // TARGETS
-window.addEventListener('load', () => { changeActive(1) ? active = changeActive(1) : active = undefined;}); // Changes default
+window.addEventListener('load', () => {
+    changeActive(1) ? (active = changeActive(1)) : (active = undefined);
+}); // Changes default
 
 search.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -35,18 +37,30 @@ function updateId() {
 }
 
 function updateLinks() {
-    // Iterate through all available links within the hotbar. Taking their names and updating them as necessary.
+    // Iterate through all available links within the hotbar.
+    // Taking their names and updating them as necessary.
     // Diable all links if active person does not exist or is null.
 
-    if (quicklinks.querySelector('#ancestry') !== null && active != undefined && active.ancestry !== '') {
-        quicklinks.querySelector('#ancestry').querySelector('a').href = data.getUrl('ancestry', active);
+    if (
+        quicklinks.querySelector('#ancestry') !== null
+    && active !== undefined
+    && active.ancestry !== ''
+    ) {
+        quicklinks.querySelector('#ancestry').querySelector('a').href = data.getUrl(
+            'ancestry',
+            active,
+        );
         quicklinks.querySelector('#ancestry').disabled = false;
     } else {
         quicklinks.querySelector('#ancestry').querySelector('a').href = 'https://www.ancestry.com';
         quicklinks.querySelector('#ancestry').disabled = true;
     }
 
-    if (quicklinks.querySelector('#familysearch') !== null && active != undefined && active.familysearch !== '') {
+    if (
+        quicklinks.querySelector('#familysearch') !== null
+    && active !== undefined
+    && active.familysearch !== ''
+    ) {
         quicklinks.querySelector('#familysearch').querySelector('a').href = data.getUrl('familysearch', active);
         quicklinks.querySelector('#familysearch').disabled = false;
     } else {
@@ -54,7 +68,11 @@ function updateLinks() {
         quicklinks.querySelector('#familysearch').disabled = true;
     }
 
-    if (quicklinks.querySelector('#findagrave') !== null && active != undefined && active.findagrave !== '') {
+    if (
+        quicklinks.querySelector('#findagrave') !== null
+    && active !== undefined
+    && active.findagrave !== ''
+    ) {
         quicklinks.querySelector('#findagrave').querySelector('a').href = data.getUrl('findagrave', active);
         quicklinks.querySelector('#findagrave').disabled = false;
     } else {
@@ -67,20 +85,6 @@ function updateLinks() {
     // console.log(quicklinks.querySelector('#familysearch').querySelector('a').href)
 }
 
-function changeActive(id) {
-    if (data.findById(id)) {
-        active = data.findById(id);
-    } else {
-        active = undefined;
-    }
-    updateName();
-    updateLinks();
-    updateId();
-    updatePhoto();
-    info.querySelector('#lifespan').innerText = data.getLifespan(active);
-    console.log(active);
-}
-
 function updatePhoto() {
     if (data.getPhoto !== '' && data.getPhoto !== undefined) {
         const img = document.createElement('img');
@@ -91,5 +95,23 @@ function updatePhoto() {
         const icon = document.createElement('i');
         icon.className = 'fa-regular fa-user fa-lg';
         document.querySelector('#profile').appendChild(icon);
+    }
+}
+
+function changeActive(id) {
+    if (data.findById(id)) {
+        active = data.findById(id);
+    } else {
+        active = undefined;
+    }
+    if (active) {
+        updateName();
+        updateLinks();
+        updateId();
+        // updatePhoto();
+        info.querySelector('#lifespan').innerText = ui.getLifespan(data.getBirthYear(active), data.getDeathYear(active));
+        console.log(active);
+    } else {
+        console.error('Person not found!');
     }
 }
