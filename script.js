@@ -11,107 +11,27 @@ const info = document.getElementById('info');
 const quicklinks = document.getElementById('quicklinks');
 const search = document.getElementById('search');
 const input = document.getElementById('input');
-let active = data.findById(1);
 
 // TARGETS
 window.addEventListener('load', () => {
-    changeActive(1) ? (active = changeActive(1)) : (active = undefined);
+    data.setActive(1);
+    renderActive(data.active)
 }); // Changes default
 
 search.addEventListener('submit', (e) => {
     e.preventDefault();
-    changeActive(input.value);
+    data.setActive(input.value);
+    renderActive(data.active);
     input.value = '';
 });
 
-function updateName() {
-    if (active !== undefined) {
-        info.querySelector('#name').innerText = data.getFullName(active);
+function renderActive(person) {
+    if (person) {
+        ui.updateName(data.getFullName(person), info.querySelector('#name'));
+        ui.updateId(data.findId(person), info.querySelector('#id'));
+        ui.updateLifespan(data.getBirthYear(data.active), data.getDeathYear(data.active), info.querySelector('#lifespan'));
+        ui.updateLinks(data.getAllLinks(data.active), quicklinks);
     } else {
-        info.querySelector('#name').innerText = 'UNKNOWN PERSON';
-    }
-}
-
-function updateId() {
-    info.querySelector('#id').innerText = data.findId(active) != undefined ? `ID: ${data.findId(active)}` : 'ID: ?';
-}
-
-function updateLinks() {
-    // Iterate through all available links within the hotbar.
-    // Taking their names and updating them as necessary.
-    // Diable all links if active person does not exist or is null.
-
-    if (
-        quicklinks.querySelector('#ancestry') !== null
-    && active !== undefined
-    && active.ancestry !== ''
-    ) {
-        quicklinks.querySelector('#ancestry').querySelector('a').href = data.getUrl(
-            'ancestry',
-            active,
-        );
-        quicklinks.querySelector('#ancestry').disabled = false;
-    } else {
-        quicklinks.querySelector('#ancestry').querySelector('a').href = 'https://www.ancestry.com';
-        quicklinks.querySelector('#ancestry').disabled = true;
-    }
-
-    if (
-        quicklinks.querySelector('#familysearch') !== null
-    && active !== undefined
-    && active.familysearch !== ''
-    ) {
-        quicklinks.querySelector('#familysearch').querySelector('a').href = data.getUrl('familysearch', active);
-        quicklinks.querySelector('#familysearch').disabled = false;
-    } else {
-        quicklinks.querySelector('#familysearch').querySelector('a').href = data.getDefaultUrl('familysearch');
-        quicklinks.querySelector('#familysearch').disabled = true;
-    }
-
-    if (
-        quicklinks.querySelector('#findagrave') !== null
-    && active !== undefined
-    && active.findagrave !== ''
-    ) {
-        quicklinks.querySelector('#findagrave').querySelector('a').href = data.getUrl('findagrave', active);
-        quicklinks.querySelector('#findagrave').disabled = false;
-    } else {
-        quicklinks.querySelector('#findagrave').querySelector('a').href = 'https://www.findagrave.com';
-        quicklinks.querySelector('#findagrave').disabled = true;
-    }
-
-    // console.log(quicklinks.querySelector('#ancestry').querySelector('a').href)
-    // console.log(quicklinks.querySelector('#findagrave').querySelector('a').href)
-    // console.log(quicklinks.querySelector('#familysearch').querySelector('a').href)
-}
-
-function updatePhoto() {
-    if (data.getPhoto !== '' && data.getPhoto !== undefined) {
-        const img = document.createElement('img');
-        img.src = data.getPhoto(active);
-        info.querySelector('#profile').querySelector('i').remove();
-        info.querySelector('#profile').appendChild(img);
-    } else if (!document.querySelector('#profile').querySelector('i')) {
-        const icon = document.createElement('i');
-        icon.className = 'fa-regular fa-user fa-lg';
-        document.querySelector('#profile').appendChild(icon);
-    }
-}
-
-function changeActive(id) {
-    if (data.findById(id)) {
-        active = data.findById(id);
-    } else {
-        active = undefined;
-    }
-    if (active) {
-        updateName();
-        updateLinks();
-        updateId();
-        // updatePhoto();
-        info.querySelector('#lifespan').innerText = ui.getLifespan(data.getBirthYear(active), data.getDeathYear(active));
-        console.log(active);
-    } else {
-        console.error('Person not found!');
+        //Create a warning that says an inaccurate person has been entered.
     }
 }

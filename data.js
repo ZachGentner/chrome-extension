@@ -117,7 +117,7 @@ const ids = {
     },
 };
 
-const active = ids[1];
+export let active = ids[1];
 
 // HOMEPAGE FUNCTIONS. DEFAULT LINKS TO COMMONLY USED NAVIGATION PAGES.
 export function getHomepage(website) {
@@ -140,20 +140,33 @@ export function getUrl(website, person) {
         if (src.ancestry.id !== undefined && person.ancestry !== '') {
             return `https://www.ancestry.com/family-tree/person/tree/${src.ancestry.id}/person/${person.ancestry}/facts`;
         }
-        return src.ancestry.defaultUrl;
+        return undefined;
     }
     if (website.toLowerCase() === 'familysearch') {
         if (person.familysearch !== '') {
             return `https://www.familysearch.org/tree/person/details/${person.familysearch}`;
         }
-        return src.familysearch.defaultUrl;
+        return undefined;
     }
     if (website.toLowerCase() === 'findagrave') {
         if (person.findagrave !== '') {
             return `https://www.findagrave.com/memorial/${person.findagrave}/`;
         }
-        return src.findagrave.defaultUrl;
+        return undefined;
     }
+}
+
+export function getAllLinks(person) {
+    let links = {};
+
+    Object.keys(src).forEach(site => {
+        links[site] = {
+            "url": getUrl(site, person),
+            "default": src[site.toString()].defaultUrl
+        }
+    })
+    
+    return links;
 }
 
 export function getDefaultUrl(website) {
@@ -161,8 +174,8 @@ export function getDefaultUrl(website) {
 }
 
 // DATABASE FUNCTIONS
-export function activePerson() {
-    return src.active;
+export function setActive(id) {
+    return active = findById(id);
 }
 
 export function findByName(name) {
@@ -173,7 +186,7 @@ export function findByName(name) {
 }
 
 export function findById(id) {
-    return ids[id];
+    return ids[id] ? ids[id] : undefined;
 }
 
 export function findId(person) {
@@ -212,6 +225,8 @@ export function getMaidenName(person) {
 }
 
 export function getFullName(person) {
+    if (person === undefined) { return }
+
     const middleInitial = person.middle ? `${person.middle[0]}. ` : '';
     const maidenName = person.maiden ? `(${person.maiden}) ` : '';
 

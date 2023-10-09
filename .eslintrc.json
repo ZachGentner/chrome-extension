@@ -12,6 +12,6 @@
     "linebreak-style": 0,
     "indent": ["error", 4],
     "lines-between-class-members": ["error", "never"],
-    "skipBlankLines": true
+    // "skipBlankLines": true
   }
 }
