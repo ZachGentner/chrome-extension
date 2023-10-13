@@ -32,6 +32,6 @@ function renderActive(person) {
         ui.updateLifespan(data.getBirthYear(data.active), data.getDeathYear(data.active), info.querySelector('#lifespan'));
         ui.updateLinks(data.getAllLinks(data.active), quicklinks);
     } else {
-        //Create a warning that says an inaccurate person has been entered.
+        //Create a warning that says an inaccurate person has been entered. Implement try/catch block instead?
     }
 }
