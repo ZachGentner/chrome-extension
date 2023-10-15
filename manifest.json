@@ -13,5 +13,8 @@
       "48": "img/favicon/favicon-32x32.png",
       "128": "img/favicon/favicon-32x32.png"
     }
-  }
+  },
+  "permissions": [
+    "activeTab"
+  ]
 }

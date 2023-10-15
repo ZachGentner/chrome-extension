@@ -16,6 +16,7 @@ const input = document.getElementById('input');
 window.addEventListener('load', () => {
     data.setActive(1);
     renderActive(data.active)
+    currentURL(document.getElementById('test'));
 }); // Changes default
 
 search.addEventListener('submit', (e) => {
@@ -34,4 +35,11 @@ function renderActive(person) {
     } else {
         //Create a warning that says an inaccurate person has been entered. Implement try/catch block instead?
     }
+}
+
+// Automatically load resources for ancestors if the current tab matches one within the database.
+function currentURL(element) {
+    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+        element.innerText = (tabs[0].url);
+    });
 }
