@@ -40,6 +40,13 @@ function renderActive(person) {
 // Automatically load resources for ancestors if the current tab matches one within the database.
 function currentURL(element) {
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+        let reg = /(?<=www\.)[^.]+(?=\.)/g;
         element.innerText = (tabs[0].url);
+        let x = document.createElement('p');
+        // x.innerText = tabs[0].url.match(reg);
+        x.innerText = data.getUrl(tabs[0].url.match(reg), data.active);
+        console.log(reg.test(tabs[0].url));
+        element.appendChild(x);
+        //Need to make a formula for getting the active website from the current url.
     });
 }
