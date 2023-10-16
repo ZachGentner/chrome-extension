@@ -47,6 +47,6 @@ function currentURL(element) {
         x.innerText = data.getUrl(tabs[0].url.match(reg), data.active);
         console.log(reg.test(tabs[0].url));
         element.appendChild(x);
-        //Need to make a formula for getting the active website from the current url.
+        //Need to make a function for getting the active website from the current url.
     });
 }
