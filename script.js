@@ -48,5 +48,6 @@ function currentURL(element) {
         console.log(reg.test(tabs[0].url));
         element.appendChild(x);
         //Need to make a function for getting the active website from the current url.
+        //Rather than grabbing the website, would it make more sense to scrape the ancestorId and do a lookup in tha db?
     });
 }
