@@ -179,10 +179,6 @@ export function getIdFromUrl(url) {
     if (url.includes('findagrave')) { return url.match(/\/(\d+)\//)[1]; }
 }
 
-export function getWebsiteName(url) {
-    return url.match();
-}
-
 // DATABASE FUNCTIONS
 export function setActive(id) {
     return active = findById(id);

@@ -43,10 +43,14 @@ function renderActive(person) {
 }
 
 // Automatically load resources for ancestors if the current tab matches one within the database.
+//This function throws an error in the fullscreen testing version but not in the popup version.
 function currentURL(element) {
-    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
-        element.innerText = data.getIdFromUrl(tabs[0].url);
-        element.innerText = data.getWebsiteName(tabs[0].url);
-        // element.innerText = (tabs[0].url);
+    
+    chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
+        // If the website is a source that can be used to load an ancestor, load the ancestor.
+        if (data.getIdFromUrl(tabs[0].url) != undefined) {
+            element.innerText = data.getIdFromUrl(tabs[0].url);
+        }
+        
     });
 }
