@@ -173,6 +173,16 @@ export function getDefaultUrl(website) {
     return src[website.toLowerCase()].defaultUrl;
 }
 
+export function getIdFromUrl(url) {
+    if (url.includes('ancestry')) { return url.match(/\/person\/(\d+)\//)[1]; }
+    if (url.includes('familysearch')) { return url.match(/([^/]+)$/)[1]; }
+    if (url.includes('findagrave')) { return url.match(/\/(\d+)\//)[1]; }
+}
+
+export function getWebsiteName(url) {
+    return url.match();
+}
+
 // DATABASE FUNCTIONS
 export function setActive(id) {
     return active = findById(id);
@@ -247,4 +257,10 @@ export function getDeathYear(person) {
 export function getPhoto(person) {
     if (person.photo) { return person.photo; }
     return undefined;
+}
+
+// SEARCH FUNCTIONS
+//Add quick search options based on the current active ancestor for common genealogical websites.
+export function searchForebears(person) {
+    return `https://forebears.io/surnames/${person.surname}`;
 }

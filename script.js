@@ -14,6 +14,11 @@ const input = document.getElementById('input');
 
 // TARGETS
 window.addEventListener('load', () => {
+    // Get the name of the website.
+    // Check if current url is an ancestor in the database.
+    // Map a new array of all relevant IDs based on website name.
+    // If so, set that ancestor as active.
+    // Otherwise, set the default/root ancestor as active.
     data.setActive(1);
     renderActive(data.active)
     currentURL(document.getElementById('test'));
@@ -40,14 +45,8 @@ function renderActive(person) {
 // Automatically load resources for ancestors if the current tab matches one within the database.
 function currentURL(element) {
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
-        let reg = /(?<=www\.)[^.]+(?=\.)/g;
-        element.innerText = (tabs[0].url);
-        let x = document.createElement('p');
-        // x.innerText = tabs[0].url.match(reg);
-        x.innerText = data.getUrl(tabs[0].url.match(reg), data.active);
-        console.log(reg.test(tabs[0].url));
-        element.appendChild(x);
-        //Need to make a function for getting the active website from the current url.
-        //Rather than grabbing the website, would it make more sense to scrape the ancestorId and do a lookup in tha db?
+        element.innerText = data.getIdFromUrl(tabs[0].url);
+        element.innerText = data.getWebsiteName(tabs[0].url);
+        // element.innerText = (tabs[0].url);
     });
 }
