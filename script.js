@@ -20,37 +20,51 @@ window.addEventListener('load', () => {
     // If so, set that ancestor as active.
     // Otherwise, set the default/root ancestor as active.
     data.setActive(1);
-    renderActive(data.active)
-    currentURL(document.getElementById('test'));
+    console.log("Before Autoload: " + data.active.first);
+    console.log("Autoload: " + autoLoad());
+    data.setActive(2);
+    console.log("After Autoload: " + data.active.first);
+    renderActive();
 }); // Changes default
 
 search.addEventListener('submit', (e) => {
     e.preventDefault();
     data.setActive(input.value);
-    renderActive(data.active);
+    renderActive();
     input.value = '';
 });
 
-function renderActive(person) {
-    if (person) {
-        ui.updateName(data.getFullName(person), info.querySelector('#name'));
-        ui.updateId(data.findId(person), info.querySelector('#id'));
-        ui.updateLifespan(data.getBirthYear(data.active), data.getDeathYear(data.active), info.querySelector('#lifespan'));
-        ui.updateLinks(data.getAllLinks(data.active), quicklinks);
-    } else {
-        //Create a warning that says an inaccurate person has been entered. Implement try/catch block instead?
-    }
-}
-
 // Automatically load resources for ancestors if the current tab matches one within the database.
 //This function throws an error in the fullscreen testing version but not in the popup version.
-function currentURL(element) {
+function autoLoad() {
+    let person = 'hello'
     
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
-        // If the website is a source that can be used to load an ancestor, load the ancestor.
+        // If the website is a source that can be used to load an person, load the person.
         if (data.getIdFromUrl(tabs[0].url) != undefined) {
-            element.innerText = data.getIdFromUrl(tabs[0].url);
+            let externalId = data.getIdFromUrl(tabs[0].url); //Extract the external id from the current url.
+            console.log(data.findByExternalId(externalId, data.getDomainName(tabs[0].url))); //Search the existing database to see if any person has the external id.
+            person = data.findByExternalId(externalId, data.getDomainName(tabs[0].url)); //Search the existing database to see if any person has the external id.
         }
-        
-    });
+    })
+
+    return person;
 }
+
+async function getUrl() {
+    let tab = undefined;
+    await chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
+        tab = tabs[0].url.toString();
+        console.log(tabs[0].url)
+    })
+    return tab;
+}
+
+function renderActive() {
+    ui.updateName(data.getFullName(data.active), info.querySelector('#name'));
+    ui.updateId(data.findId(data.active), info.querySelector('#id'));
+    ui.updateLifespan(data.getBirthYear(data.active), data.getDeathYear(data.active), info.querySelector('#lifespan'));
+    ui.updateLinks(data.getAllLinks(data.active), quicklinks);
+}
+
+console.log("getUrl: " + getUrl());

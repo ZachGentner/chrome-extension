@@ -117,7 +117,7 @@ const ids = {
     },
 };
 
-export let active = ids[1];
+export let active = undefined;
 
 // HOMEPAGE FUNCTIONS. DEFAULT LINKS TO COMMONLY USED NAVIGATION PAGES.
 export function getHomepage(website) {
@@ -169,14 +169,22 @@ export function getAllLinks(person) {
     return links;
 }
 
+//Returns the homepage url for any source website in the database 'src'.
 export function getDefaultUrl(website) {
     return src[website.toLowerCase()].defaultUrl;
 }
 
+//Extracts relevant person ids from urls with different websites.
 export function getIdFromUrl(url) {
     if (url.includes('ancestry')) { return url.match(/\/person\/(\d+)\//)[1]; }
     if (url.includes('familysearch')) { return url.match(/([^/]+)$/)[1]; }
     if (url.includes('findagrave')) { return url.match(/\/(\d+)\//)[1]; }
+}
+
+//Returns only the domain name from a url.
+export function getDomainName(url) {
+    let temp = url.slice(url.indexOf('www.') + 4, url.length);
+    return temp.slice(0, temp.indexOf('.')); //Optimize with a regex later.
 }
 
 // DATABASE FUNCTIONS
@@ -198,6 +206,21 @@ export function findById(id) {
 export function findId(person) {
     const keys = Object.keys(ids);
     return keys.find((key) => ids[key] === person);
+}
+
+//Search the database for an ancestor with the corresponding id.
+export function findByExternalId(externalId, website) {
+    
+    //If the website exists in the database of sources
+    if(Object.keys(src).includes(website)) {
+        //Iterate through the people in the ids database
+        for (let id in ids) {
+            //If the current persons id matches the argument id, return that persons index
+            if (ids[id][website] === externalId) { return id; }
+        }
+    }
+
+    return undefined;
 }
 
 function addPerson(person) {
@@ -260,3 +283,7 @@ export function getPhoto(person) {
 export function searchForebears(person) {
     return `https://forebears.io/surnames/${person.surname}`;
 }
+
+// findByExternalId('352320388755', 'ancestry');
+// console.log(getDomainName('https://www.ancestry.com/family-tree/tree/178204157/memories/'))
+// console.log(getDomainName('https://www.familysearch.org/tree/person/details/L2Y8-T2J'))
