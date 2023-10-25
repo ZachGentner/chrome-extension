@@ -56,11 +56,11 @@ async function autoLoad() {
     //Find internal id from external id, otherwise set to root ancestor.
     let internalId = data.findByExternalId(externalId, domain) != undefined ? data.findByExternalId(externalId, domain) : 1;
     data.setActive(internalId); //Set the active ancestor to the internalId.
-}
+};
 
 function renderActive() {
     ui.updateName(data.getFullName(data.active), info.querySelector('#name'));
     ui.updateId(data.findId(data.active), info.querySelector('#id'));
     ui.updateLifespan(data.getBirthYear(data.active), data.getDeathYear(data.active), info.querySelector('#lifespan'));
     ui.updateLinks(data.getAllLinks(data.active), quicklinks);
-}
+};
