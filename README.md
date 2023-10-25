@@ -38,14 +38,14 @@
   <p align="center">
     A Google Chrome extension that allows quick navigation between ancestor profiles on different genealogy sites.
     <br />
-    <a href="https://github.com/zachgentner/chrome-extension"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/zachgentner/rootwise"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="">View Demo</a>
     ·
-    <a href="https://github.com/zachgentner/chrome-extension/issues">Report Bug</a>
+    <a href="https://github.com/zachgentner/rootwise/issues">Report Bug</a>
     ·
-    <a href="https://github.com/zachgentner/chrome-extension/issues">Request Feature</a>
+    <a href="https://github.com/zachgentner/rootwise/issues">Request Feature</a>
   </p>
 </div>
 
@@ -97,18 +97,17 @@ Rootwise is a Google Chrome extension that allows genealogy researchers to quick
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+At this time, Rootwise has not yet reached the deployment stage. Stay tuned for updates!
 
 ### Prerequisites
 
-TODO.
+Rootwise is a Google chrome extension that can be installed from the Chrome Web Store. 
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/zachgentner/chrome-extension.git
+   git clone https://github.com/zachgentner/rootwise.git
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -117,7 +116,7 @@ TODO.
 
 ## Usage
 
-TODO
+Usage details will be updated once Rootwise reaches it's initial deployment.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -154,7 +153,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Copyright Zach Gentner. All rights reserved. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -164,7 +163,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@zach_gentner](https://twitter.com/zach_gentner) - zach.gentner@gmail.com
 
-Project Link: [https://github.com/zachgentner/tictactoe](https://github.com/zachgentner/chrome-extension)
+Project Link: [https://github.com/zachgentner/rootwise](https://github.com/zachgentner/rootwise)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -183,7 +182,7 @@ Project Link: [https://github.com/zachgentner/tictactoe](https://github.com/zach
 [license-url]: https://github.com/zachgentner/tictactoe/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/zachgentner
-[product-screenshot]: /tictactoe.png
+[product-screenshot]: ./img/github.png
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [HTML.com]: https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white

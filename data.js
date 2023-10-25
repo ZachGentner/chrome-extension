@@ -178,9 +178,9 @@ export function getDefaultUrl(website) {
 
 //Extracts relevant person ids from urls with different websites.
 export function getIdFromUrl(url) {
-    if (url.includes('ancestry')) { return url.match(/\/person\/(\d+)\//)[1]; }
-    if (url.includes('familysearch')) { return url.match(/([^/]+)$/)[1]; }
-    if (url.includes('findagrave')) { return url.match(/\/(\d+)\//)[1]; }
+    if (url.includes('ancestry')) { return url.match(/\/person\/(\d+)\//) ? url.match(/\/person\/(\d+)\//)[1] : src['ancestry'].defaultUrl }
+    if (url.includes('familysearch')) { return url.match(/([^/]+)$/) ? url.match(/([^/]+)$/)[1] : src['familysearch'].defaultUrl }
+    if (url.includes('findagrave')) { return url.match(/\/(\d+)\//) ? url.match(/\/(\d+)\//)[1] : src['findagrave'].defaultUrl; }
 
 }
 
@@ -289,5 +289,9 @@ export function getPhoto(person) {
 // SEARCH FUNCTIONS
 //Add quick search options based on the current active ancestor for common genealogical websites.
 export function searchForebears(person) {
-    return `https://forebears.io/surnames/${person.surname}`;
+    if (person.maiden !== "" && person.maiden !== undefined) {
+        return `https://forebears.io/surnames/${person.maiden}`;
+    } else {
+        return `https://forebears.io/surnames/${person.surname}`;
+    }
 }

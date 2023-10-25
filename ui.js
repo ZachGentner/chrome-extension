@@ -41,6 +41,11 @@ export function updateLinks(links, element) {
     }
 }
 
+// Opens a new tab with the url passed as an argument.
+export function openNewTab(url) {
+    return window.open(url, '_blank').focus();
+}
+
 // function updatePhoto(photoUrl, photoFrame) {
 //     if (photoUrl !== '' && photoUrl !== undefined) {
 //         const img = document.createElement('img');
