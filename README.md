@@ -101,7 +101,7 @@ At this time, Rootwise has not yet reached the deployment stage. Stay tuned for 
 
 ### Prerequisites
 
-Rootwise is a Google chrome extension that can be installed from the Chrome Web Store. 
+Rootwise is a Google Chrome extension that can be installed from the Chrome Web Store. 
 
 ### Installation
 

@@ -1,0 +1,41 @@
+ROOTWISE SOFTWARE LICENSE
+
+This Rootwise Software License (the "License") is an agreement between Zach Gentner ("Licensor") and any individual or entity that uses, but does not distribute, copy, or modify the software known as "Rootwise" (the "Software"). By using the Software, you agree to be bound by the terms and conditions of this License.
+
+1. GRANT OF LICENSE
+
+1.1. License Grant. Subject to the terms and conditions of this License, Licensor grants you a non-exclusive, non-transferable, revocable, and limited license to use the Software for any lawful purpose, including both personal and commercial use. You may not distribute, copy, or modify the Software.
+
+2. RESTRICTIONS
+
+2.1. Proprietary Rights. You acknowledge that the Software and any related documentation contain proprietary information and are protected by copyright and other intellectual property laws. You agree not to remove or alter any copyright notices or proprietary labels contained within the Software.
+
+2.2. Limitations. You may not:
+
+a. Use the Software for any unlawful purpose.
+b. Sublicense, sell, lease, rent, or distribute the Software.
+c. Reverse engineer, decompile, disassemble, or attempt to derive the source code of the Software, except as permitted by applicable law.
+
+3. DISCLAIMER OF WARRANTY
+
+The Software is provided "as is," without any warranty of any kind, either express or implied. Licensor makes no representations or warranties concerning the Software's fitness for any particular purpose, its quality, or its performance. You assume the entire risk of using the Software.
+
+4. LIMITATION OF LIABILITY
+
+In no event shall Licensor be liable for any direct, indirect, special, incidental, or consequential damages arising out of the use or inability to use the Software, even if Licensor has been advised of the possibility of such damages.
+
+5. TERMINATION
+
+This License is effective until terminated. Your rights under this License will terminate automatically without notice if you fail to comply with any term or condition of this License. Upon termination, you must cease all use of the Software.
+
+6. GOVERNING LAW
+
+This License is governed by and construed in accordance with the laws of Michigan, USA.
+
+7. ENTIRE AGREEMENT
+
+This License constitutes the entire agreement between you and Licensor concerning the Software and supersedes all prior and contemporaneous agreements and understandings, whether oral or written.
+
+8. CONTACT INFORMATION
+
+If you have any questions regarding this License, please contact Zach Gentner.
