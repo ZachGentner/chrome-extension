@@ -22,7 +22,6 @@ window.addEventListener('load', () => {
     data.setActive(1);
     console.log("Before Autoload: " + data.active.first);
     console.log("Autoload: " + autoLoad());
-    data.setActive(2);
     console.log("After Autoload: " + data.active.first);
     renderActive();
 }); // Changes default
