@@ -5,6 +5,7 @@
 
 import * as data from './data.js';
 import * as ui from './ui.js';
+import settings from './settings.json' assert { type: 'json' };
 
 // VARIABLE DECLARATIONS
 const info = document.getElementById('info');
@@ -14,46 +15,22 @@ const input = document.getElementById('input');
 
 // TARGETS
 window.addEventListener('load', async () => {
-    let url = await getUrl(); // The current url of the active tab.
-    let domain = data.getDomainName(url); // The domain name of the current url.
-    let externalId = data.getIdFromUrl(url); // The external ID of the ancestor from the current url.
+    // If autoload is enabled, load the active ancestor. Else load the root ancestor.
+    if (settings.autoload) {
+        await autoLoad(); // Autoload current ancestor based on active tab.
+    } else {
+        data.setActive(1);
+    }
 
-    //Find internal id from external id, otherwise set to root ancestor.
-    let internalId = data.findByExternalId(externalId, domain) != undefined ? data.findByExternalId(externalId, domain) : 1;
-
-    data.setActive(internalId); //Set the active ancestor to the internalId.
     renderActive(); //Render the data of the active ancestor.
 });
 
 search.addEventListener('submit', (e) => {
     e.preventDefault();
     data.setActive(input.value);
-    renderActive();
+    renderActive(document.querySelector('body'));
     input.value = '';
 });
-
-// Automatically load resources for ancestors if the current tab matches one within the database.
-//This function throws an error in the fullscreen testing version but not in the popup version.
-async function autoLoad(url) {
-    let personId = 1;
-
-    // If the website is a source that can be used to load an person, load the person.
-    if (url != null) {
-        let externalId = data.getIdFromUrl(url); //Extract the external id from the current url.
-        personId = data.findByExternalId(externalId, data.getDomainName(tabs[0].url)); //Search the existing database to see if any person has the external id.
-        console.log("personId: " + personId);
-    }
-
-    return personId;
-}
-
-// function getUrl() {
-//     let tab = undefined;
-//     chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
-//         tab = tabs[0].url;
-//     });
-//     return tab;
-// }
 
 // Query the url for the active tab. If found, return the url. Otherwise return undefined.
 async function getUrl() {
@@ -70,6 +47,16 @@ async function getUrl() {
         return null;
     }
 };
+
+// Automatically load the ancestor from the current url as the active ancestor.
+async function autoLoad() {
+    let url = await getUrl(); // The current url of the active tab.
+    let domain = data.getDomainName(url); // The domain name of the current url.
+    let externalId = data.getIdFromUrl(url); // The external ID of the ancestor from the current url.
+    //Find internal id from external id, otherwise set to root ancestor.
+    let internalId = data.findByExternalId(externalId, domain) != undefined ? data.findByExternalId(externalId, domain) : 1;
+    data.setActive(internalId); //Set the active ancestor to the internalId.
+}
 
 function renderActive() {
     ui.updateName(data.getFullName(data.active), info.querySelector('#name'));

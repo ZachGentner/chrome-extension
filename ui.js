@@ -41,15 +41,15 @@ export function updateLinks(links, element) {
     }
 }
 
-// function updatePhoto() {
-//     if (data.getPhoto !== '' && data.getPhoto !== undefined) {
+// function updatePhoto(photoUrl, photoFrame) {
+//     if (photoUrl !== '' && photoUrl !== undefined) {
 //         const img = document.createElement('img');
-//         img.src = data.getPhoto(data.active);
-//         info.querySelector('#profile').querySelector('i').remove();
-//         info.querySelector('#profile').appendChild(img);
+//         img.src = photoUrl;
+//         photoFrame.querySelector('i').remove();
+//         photoFrame.appendChild(img);
 //     } else if (!document.querySelector('#profile').querySelector('i')) {
 //         const icon = document.createElement('i');
 //         icon.className = 'fa-regular fa-user fa-lg';
-//         document.querySelector('#profile').appendChild(icon);
+//         photoFrame.appendChild(icon);
 //     }
 // }

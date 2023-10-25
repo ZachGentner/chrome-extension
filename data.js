@@ -135,6 +135,7 @@ export function getHomepage(website) {
 }
 
 // URL FUNCTIONS
+// Generates a url given args website name and a person object. Else return undefined.
 export function getUrl(website, person) {
     if (website.toLowerCase() === 'ancestry') {
         if (src.ancestry.id !== undefined && person.ancestry !== '') {
@@ -156,6 +157,7 @@ export function getUrl(website, person) {
     }
 }
 
+// Generates an object with keys corresponding to site names and values of unique ancestor urls.
 export function getAllLinks(person) {
     let links = {};
 
@@ -190,7 +192,8 @@ export function getDomainName(url) {
 
 // DATABASE FUNCTIONS
 export function setActive(id) {
-    return active = findById(id);
+    // If an ancestor is found with arg id, load them as active. Otherwise, keep the current active ancestor.
+    return active = findById(id) != undefined ? findById(id) : active;
 }
 
 export function findByName(name) {
@@ -200,10 +203,12 @@ export function findByName(name) {
     return undefined;
 }
 
+// If internalId exists, return the ancestor at that id. Else return undefined.
 export function findById(id) {
     return ids[id] ? ids[id] : undefined;
 }
 
+// If person exists, return the id of that ancestor. Else return undefined.
 export function findId(person) {
     const keys = Object.keys(ids);
     return keys.find((key) => ids[key] === person);
@@ -275,7 +280,9 @@ export function getDeathYear(person) {
 }
 
 export function getPhoto(person) {
-    if (person.photo) { return person.photo; }
+    if (person.photo !== "" && person.photo !== undefined) {
+        return person.photo;
+    }
     return undefined;
 }
 
@@ -284,7 +291,3 @@ export function getPhoto(person) {
 export function searchForebears(person) {
     return `https://forebears.io/surnames/${person.surname}`;
 }
-
-// findByExternalId('352320388755', 'ancestry');
-// console.log(getDomainName('https://www.ancestry.com/family-tree/tree/178204157/memories/'))
-// console.log(getDomainName('https://www.familysearch.org/tree/person/details/L2Y8-T2J'))
