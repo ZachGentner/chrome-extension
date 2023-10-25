@@ -13,18 +13,17 @@ const search = document.getElementById('search');
 const input = document.getElementById('input');
 
 // TARGETS
-window.addEventListener('load', () => {
-    // Get the name of the website.
-    // Check if current url is an ancestor in the database.
-    // Map a new array of all relevant IDs based on website name.
-    // If so, set that ancestor as active.
-    // Otherwise, set the default/root ancestor as active.
-    data.setActive(1);
-    console.log("Before Autoload: " + data.active.first);
-    console.log("Autoload: " + autoLoad());
-    console.log("After Autoload: " + data.active.first);
-    renderActive();
-}); // Changes default
+window.addEventListener('load', async () => {
+    let url = await getUrl(); // The current url of the active tab.
+    let domain = data.getDomainName(url); // The domain name of the current url.
+    let externalId = data.getIdFromUrl(url); // The external ID of the ancestor from the current url.
+
+    //Find internal id from external id, otherwise set to root ancestor.
+    let internalId = data.findByExternalId(externalId, domain) != undefined ? data.findByExternalId(externalId, domain) : 1;
+
+    data.setActive(internalId); //Set the active ancestor to the internalId.
+    renderActive(); //Render the data of the active ancestor.
+});
 
 search.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -35,29 +34,42 @@ search.addEventListener('submit', (e) => {
 
 // Automatically load resources for ancestors if the current tab matches one within the database.
 //This function throws an error in the fullscreen testing version but not in the popup version.
-function autoLoad() {
-    let person = 'hello'
-    
-    chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
-        // If the website is a source that can be used to load an person, load the person.
-        if (data.getIdFromUrl(tabs[0].url) != undefined) {
-            let externalId = data.getIdFromUrl(tabs[0].url); //Extract the external id from the current url.
-            console.log(data.findByExternalId(externalId, data.getDomainName(tabs[0].url))); //Search the existing database to see if any person has the external id.
-            person = data.findByExternalId(externalId, data.getDomainName(tabs[0].url)); //Search the existing database to see if any person has the external id.
-        }
-    })
+async function autoLoad(url) {
+    let personId = 1;
 
-    return person;
+    // If the website is a source that can be used to load an person, load the person.
+    if (url != null) {
+        let externalId = data.getIdFromUrl(url); //Extract the external id from the current url.
+        personId = data.findByExternalId(externalId, data.getDomainName(tabs[0].url)); //Search the existing database to see if any person has the external id.
+        console.log("personId: " + personId);
+    }
+
+    return personId;
 }
 
+// function getUrl() {
+//     let tab = undefined;
+//     chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
+//         tab = tabs[0].url;
+//     });
+//     return tab;
+// }
+
+// Query the url for the active tab. If found, return the url. Otherwise return undefined.
 async function getUrl() {
-    let tab = undefined;
-    await chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
-        tab = tabs[0].url.toString();
-        console.log(tabs[0].url)
-    })
-    return tab;
-}
+    try {
+        const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
+        if (tab) {
+            return tab.url;
+        } else {
+            console.error('No active tab found.');
+            return null;
+        }
+    } catch (error) {
+        console.error('An error occurred:', error);
+        return null;
+    }
+};
 
 function renderActive() {
     ui.updateName(data.getFullName(data.active), info.querySelector('#name'));
@@ -65,5 +77,3 @@ function renderActive() {
     ui.updateLifespan(data.getBirthYear(data.active), data.getDeathYear(data.active), info.querySelector('#lifespan'));
     ui.updateLinks(data.getAllLinks(data.active), quicklinks);
 }
-
-console.log("getUrl: " + getUrl());

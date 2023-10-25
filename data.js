@@ -179,6 +179,7 @@ export function getIdFromUrl(url) {
     if (url.includes('ancestry')) { return url.match(/\/person\/(\d+)\//)[1]; }
     if (url.includes('familysearch')) { return url.match(/([^/]+)$/)[1]; }
     if (url.includes('findagrave')) { return url.match(/\/(\d+)\//)[1]; }
+
 }
 
 //Returns only the domain name from a url.
