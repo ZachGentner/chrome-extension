@@ -52,3 +52,25 @@ function saveFile() {
     })
 }
 
+// Years, by country, census was taken. Use to calculate how many censuses ancestor should have appeared in during their lifespan.
+const census = {
+    us: {
+        1790: true,
+        1800: true,
+        1810: true,
+        1820: true,
+        1830: true,
+        1840: true,
+        1850: true,
+        1860: true,
+        1870: true,
+        1880: true,
+        1890: true,
+        1900: true,
+        1910: true,
+        1920: true,
+        1930: true,
+        1940: true,
+        1950: true,
+    }
+}
