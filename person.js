@@ -12,11 +12,13 @@ class Person {
     ancestry;
     familysearch;
     findagrave;
+    notes;
 
     constructor(first, surname) {
         this.first = first;
         this.surname = surname;
         this.links = [];
+        this.notes = "";
     }
 }
 
