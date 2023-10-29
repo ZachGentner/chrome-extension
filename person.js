@@ -22,6 +22,28 @@ class Person {
     }
 }
 
+const templatePerson = {
+    meta: {
+        links: [],
+        notes: "",
+        photo,
+        ancestry,
+        familysearch,
+        findagrave
+    },
+    name: {
+        first,
+        middle,
+        maiden,
+        last,
+        alias
+    },
+    //BIRTH
+    birthdate,
+    //DEATH
+    deathdate
+}
+
 function addPerson(person) {
     ids[Object.keys(ids).length + 1] = person;
 }
