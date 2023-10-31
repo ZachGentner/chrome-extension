@@ -13,36 +13,35 @@ class Person {
     familysearch;
     findagrave;
     notes;
-
     constructor(first, surname) {
         this.first = first;
         this.surname = surname;
         this.links = [];
-        this.notes = "";
+        this.notes = '';
     }
 }
 
 const templatePerson = {
     meta: {
         links: [],
-        notes: "",
+        notes: '',
         photo,
         ancestry,
         familysearch,
-        findagrave
+        findagrave,
     },
     name: {
         first,
         middle,
         maiden,
         last,
-        alias
+        alias,
     },
-    //BIRTH
+    // BIRTH
     birthdate,
-    //DEATH
-    deathdate
-}
+    // DEATH
+    deathdate,
+};
 
 function addPerson(person) {
     ids[Object.keys(ids).length + 1] = person;

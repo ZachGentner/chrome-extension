@@ -14,34 +14,6 @@ const src = {
     },
 };
 
-class Person {
-    first;
-    middle;
-    surname;
-    sex;
-    birth;
-    death;
-    photo;
-    links;
-    ancestry;
-    familysearch;
-    findagrave;
-
-    constructor(first, surname) {
-        this.first = first;
-        this.middle = '';
-        this.surname = surname;
-        this.sex = '';
-        this.birth = '';
-        this.death = '';
-        this.photo = '';
-        this.links = [];
-        this.ancestry = '';
-        this.familysearch = '';
-        this.findagrave = '';
-    }
-}
-
 const ids = {
     1: {
         first: 'Zachary',
@@ -121,86 +93,90 @@ export let active = undefined;
 
 // HOMEPAGE FUNCTIONS. DEFAULT LINKS TO COMMONLY USED NAVIGATION PAGES.
 export function getHomepage(website) {
+    let homepage = '';
+
     if (website.toLowerCase() === 'ancestry') {
         if (src.ancestry.id !== undefined && src.ancestry.profile !== undefined) {
-            return `https://www.ancestry.com/family-tree/tree/${src.ancestry.id}/family?cfpid=${src.ancestry.root}`;
+            homepage = `https://www.ancestry.com/family-tree/tree/${src.ancestry.id}/family?cfpid=${src.ancestry.root}`;
         }
     }
     if (website.toLowerCase() === 'familysearch') {
-        return `https://www.familysearch.org/tree/pedigree/fanchart/${src.familysearch.id}`;
+        homepage = `https://www.familysearch.org/tree/pedigree/fanchart/${src.familysearch.id}`;
     }
     if (website.toLowerCase() === 'findagrave') {
-        return `https://www.findagrave.com/virtual-cemetery/${src.findagrave.id}`;
+        homepage = `https://www.findagrave.com/virtual-cemetery/${src.findagrave.id}`;
     }
+
+    return homepage;
 }
 
 // URL FUNCTIONS
 // Generates a url given args website name and a person object. Else return undefined.
 export function getUrl(website, person) {
+    let url;
+
     if (website.toLowerCase() === 'ancestry') {
         if (src.ancestry.id !== undefined && person.ancestry !== '') {
-            return `https://www.ancestry.com/family-tree/person/tree/${src.ancestry.id}/person/${person.ancestry}/facts`;
+            url = `https://www.ancestry.com/family-tree/person/tree/${src.ancestry.id}/person/${person.ancestry}/facts`;
         }
-        return undefined;
     }
     if (website.toLowerCase() === 'familysearch') {
         if (person.familysearch !== '') {
-            return `https://www.familysearch.org/tree/person/details/${person.familysearch}`;
+            url = `https://www.familysearch.org/tree/person/details/${person.familysearch}`;
         }
-        return undefined;
     }
     if (website.toLowerCase() === 'findagrave') {
         if (person.findagrave !== '') {
-            return `https://www.findagrave.com/memorial/${person.findagrave}/`;
+            url = `https://www.findagrave.com/memorial/${person.findagrave}/`;
         }
-        return undefined;
     }
+
+    return url;
 }
 
 // Generates an object with keys corresponding to site names and values of unique ancestor urls.
 export function getAllLinks(person) {
     let links = {};
 
-    Object.keys(src).forEach(site => {
+    Object.keys(src).forEach((site) => {
         links[site] = {
-            "url": getUrl(site, person),
-            "default": src[site.toString()].defaultUrl
-        }
-    })
-    
+            url: getUrl(site, person),
+            default: src[site.toString()].defaultUrl,
+        };
+    });
+
     return links;
 }
 
-//Returns the homepage url for any source website in the database 'src'.
+// Returns the homepage url for any source website in the database 'src'.
 export function getDefaultUrl(website) {
     return src[website.toLowerCase()].defaultUrl;
 }
 
-//Extracts relevant person ids from urls with different websites.
+// Extracts relevant person ids from urls with different websites.
 export function getIdFromUrl(url) {
-    if (url.includes('ancestry')) { return url.match(/\/person\/(\d+)\//) ? url.match(/\/person\/(\d+)\//)[1] : src['ancestry'].defaultUrl }
-    if (url.includes('familysearch')) { return url.match(/([^/]+)$/) ? url.match(/([^/]+)$/)[1] : src['familysearch'].defaultUrl }
-    if (url.includes('findagrave')) { return url.match(/\/(\d+)\//) ? url.match(/\/(\d+)\//)[1] : src['findagrave'].defaultUrl; }
+    let id;
 
+    if (url.includes('ancestry')) { id = url.match(/\/person\/(\d+)\//) ? url.match(/\/person\/(\d+)\//)[1] : src.ancestry.defaultUrl; }
+    if (url.includes('familysearch')) { id = url.match(/([^/]+)$/) ? url.match(/([^/]+)$/)[1] : src.familysearch.defaultUrl; }
+    if (url.includes('findagrave')) { id = url.match(/\/(\d+)\//) ? url.match(/\/(\d+)\//)[1] : src.findagrave.defaultUrl; }
+
+    return id;
 }
 
-//Returns only the domain name from a url.
+// Returns only the domain name from a url.
 export function getDomainName(url) {
-    let temp = url.slice(url.indexOf('www.') + 4, url.length);
-    return temp.slice(0, temp.indexOf('.')); //Optimize with a regex later.
+    const temp = url.slice(url.indexOf('www.') + 4, url.length);
+    return temp.slice(0, temp.indexOf('.')); // Optimize with a regex later?
 }
 
 // DATABASE FUNCTIONS
-export function setActive(id) {
-    // If an ancestor is found with arg id, load them as active. Otherwise, keep the current active ancestor.
-    return active = findById(id) != undefined ? findById(id) : active;
-}
-
 export function findByName(name) {
+    let person;
     Object.keys(ids).forEach((id) => {
-        if (ids[id].name === name) { return ids[id]; }
+        if (ids[id].name === name) { person = ids[id]; }
     });
-    return undefined;
+    return person;
 }
 
 // If internalId exists, return the ancestor at that id. Else return undefined.
@@ -214,14 +190,13 @@ export function findId(person) {
     return keys.find((key) => ids[key] === person);
 }
 
-//Search the database for an ancestor with the corresponding id.
+// Search the database for an ancestor with the corresponding id.
 export function findByExternalId(externalId, website) {
-    
-    //If the website exists in the database of sources
+    // If the website exists in the database of sources
     if(Object.keys(src).includes(website)) {
-        //Iterate through the people in the ids database
+        // Iterate through the people in the ids database
         for (let id in ids) {
-            //If the current persons id matches the argument id, return that persons index
+            // If the current persons id matches the argument id, return that persons index
             if (ids[id][website] === externalId) { return id; }
         }
     }
@@ -229,13 +204,18 @@ export function findByExternalId(externalId, website) {
     return undefined;
 }
 
-function addPerson(person) {
-    if (person.constructor.name === 'Person') { ids[Object.keys(ids).length + 1] = person; }
-}
+// function addPerson(person) {
+//     if (person.constructor.name === 'Person') { ids[Object.keys(ids).length + 1] = person; }
+// }
 
-function swapIds(person1, person2) {
-    ids[findId(person1)] = person2;
-    ids[findId(person2)] = person1;
+// function swapIds(person1, person2) {
+//     ids[findId(person1)] = person2;
+//     ids[findId(person2)] = person1;
+// }
+
+export function setActive(id) {
+    // If an ancestor is found with arg id, load them as active. Else keep current active.
+    active = findById(id) !== undefined ? findById(id) : active;
 }
 
 // NAME FUNCTIONS
@@ -260,12 +240,16 @@ export function getMaidenName(person) {
 }
 
 export function getFullName(person) {
-    if (person === undefined) { return }
+    let name;
 
-    const middleInitial = person.middle ? `${person.middle[0]}. ` : '';
-    const maidenName = person.maiden ? `(${person.maiden}) ` : '';
+    if (person !== undefined) {
+        const middleInitial = person.middle ? `${person.middle[0]}. ` : '';
+        const maidenName = person.maiden ? `(${person.maiden}) ` : '';
 
-    return `${person.first} ${middleInitial}${maidenName}${person.surname}`;
+        name = `${person.first} ${middleInitial}${maidenName}${person.surname}`;
+    }
+
+    return name;
 }
 
 // DATE FUNCTIONS
@@ -280,18 +264,17 @@ export function getDeathYear(person) {
 }
 
 export function getPhoto(person) {
-    if (person.photo !== "" && person.photo !== undefined) {
+    if (person.photo !== '' && person.photo !== undefined) {
         return person.photo;
     }
     return undefined;
 }
 
 // SEARCH FUNCTIONS
-//Add quick search options based on the current active ancestor for common genealogical websites.
+// Add quick search options based on the current active ancestor for common genealogical websites.
 export function searchForebears(person) {
-    if (person.maiden !== "" && person.maiden !== undefined) {
+    if (person.maiden !== '' && person.maiden !== undefined) {
         return `https://forebears.io/surnames/${person.maiden}`;
-    } else {
-        return `https://forebears.io/surnames/${person.surname}`;
     }
+    return `https://forebears.io/surnames/${person.surname}`;
 }
