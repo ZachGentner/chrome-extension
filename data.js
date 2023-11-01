@@ -19,6 +19,7 @@ const ids = {
         first: 'Zachary',
         middle: 'Norman',
         surname: 'Gentner',
+        maiden: '',
         birth: '1992',
         death: 'Living',
         photo:
@@ -32,6 +33,7 @@ const ids = {
         first: 'Todd',
         middle: 'William',
         surname: 'Gentner',
+        maiden: '',
         birth: '1965',
         death: '2021',
         photo:
@@ -89,7 +91,7 @@ const ids = {
     },
 };
 
-export let active = undefined;
+export let active;
 
 // HOMEPAGE FUNCTIONS. DEFAULT LINKS TO COMMONLY USED NAVIGATION PAGES.
 export function getHomepage(website) {
@@ -136,7 +138,7 @@ export function getUrl(website, person) {
 
 // Generates an object with keys corresponding to site names and values of unique ancestor urls.
 export function getAllLinks(person) {
-    let links = {};
+    const links = {};
 
     Object.keys(src).forEach((site) => {
         links[site] = {
@@ -171,13 +173,13 @@ export function getDomainName(url) {
 }
 
 // DATABASE FUNCTIONS
-export function findByName(name) {
-    let person;
-    Object.keys(ids).forEach((id) => {
-        if (ids[id].name === name) { person = ids[id]; }
-    });
-    return person;
-}
+// export function findByName(name) {
+//     let person;
+//     Object.keys(ids).forEach((id) => {
+//         if (ids[id].name === name) { person = ids[id]; }
+//     });
+//     return person;
+// }
 
 // If internalId exists, return the ancestor at that id. Else return undefined.
 export function findById(id) {
@@ -193,9 +195,9 @@ export function findId(person) {
 // Search the database for an ancestor with the corresponding id.
 export function findByExternalId(externalId, website) {
     // If the website exists in the database of sources
-    if(Object.keys(src).includes(website)) {
+    if (Object.keys(src).includes(website)) {
         // Iterate through the people in the ids database
-        for (let id in ids) {
+        for (const id in ids) {
             // If the current persons id matches the argument id, return that persons index
             if (ids[id][website] === externalId) { return id; }
         }
@@ -214,8 +216,13 @@ export function findByExternalId(externalId, website) {
 // }
 
 export function setActive(id) {
-    // If an ancestor is found with arg id, load them as active. Else keep current active.
-    active = findById(id) !== undefined ? findById(id) : active;
+    // If an ancestor is found with numerid arg id, load them as active. Else keep current active.
+    if ((/\d+/).test(id)) {
+        active = findById(id) !== undefined ? findById(id) : active;
+    } else if (searchByName(id).length >= 1) {
+        active = searchByName(id)[0];
+        console.log(id);
+    }
 }
 
 // NAME FUNCTIONS
@@ -278,3 +285,72 @@ export function searchForebears(person) {
     }
     return `https://forebears.io/surnames/${person.surname}`;
 }
+
+export function reduceArray(key, value) {
+    const people = [];
+
+    Object.keys(ids).forEach((id) => {
+        if (ids[id][key] === value) { people[people.length] = ids[id]; }
+    });
+
+    return people.length >= 1 ? people : undefined;
+}
+
+// Finds people matching the string provided in this format: "Surname, First (Middle)"
+export function searchByName(name) {
+    let firstname;
+    let middlename;
+    let surname;
+    let people = [];
+
+    if (name.length >= 1 && !(/^\s*$/).test(name)) { // If string > 1 and not whitespace.
+        surname = name.indexOf(',') === -1 ? name : name.slice(0, name.indexOf(','));
+        surname = surname.trim()
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .replace(/\d+/g, '');
+
+        if (surname !== undefined) {
+            people = Object.keys(ids)
+                .filter((id) => ids[id].surname.toLowerCase().startsWith(surname)
+                || ids[id].maiden.toLowerCase().startsWith(surname))
+                .map((id) => ids[id]);
+        }
+
+        if (name.indexOf(',') !== name.length - 1 && name.indexOf(',') !== -1) { // If index of , is not end of string.
+            firstname = name.indexOf(',') !== -1 ? name.slice(name.indexOf(',') + 1, name.length) : undefined;
+            firstname = firstname.trim()
+                .toLowerCase()
+                .replace(/\s{2,}/g, ' ')
+                .split(' ')
+                .slice(0, 1)
+                .join();
+        }
+
+        //     middlename = name.indexOf(',') !== -1 ? name.slice(name.indexOf(',') + 1, name.length) : undefined;
+        //     middlename = middlename.trim()
+        //         .toLowerCase()
+        //         .replace(/\s{2,}/g, ' ')
+        //         .split(' ')
+        //         .slice(1, 2)
+        //         .join();
+        // }
+
+        if (firstname !== undefined) {
+            people = Object.keys(people)
+                .filter((id) => people[id].surname.toLowerCase() === surname)
+                .filter((id) => people[id].first.toLowerCase().startsWith(firstname))
+                .map((id) => people[id]);
+        }
+
+        // if (middlename !== undefined) {
+        //     people = Object.keys(people)
+        //         .filter((id) => people[id].middle.toLowerCase().startsWith(middlename))
+        //         .map((id) => people[id]);
+        // }
+    }
+
+    return people;
+}
+
+console.log(searchByName('chatfield, r'));
