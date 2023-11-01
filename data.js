@@ -89,6 +89,78 @@ const ids = {
         familysearch: 'L2YL-TQ5',
         findagrave: '220745410',
     },
+    8: {
+        first: 'Herbert',
+        middle: 'William',
+        surname: 'Gentner',
+        maiden: '',
+        ancestry: '',
+        familysearch: 'L2YX-J24',
+        findagrave: '36924469',
+    },
+    9: {
+        first: 'Bessie',
+        middle: 'Dorothy',
+        surname: 'Gentner',
+        maiden: 'Willis',
+        ancestry: '',
+        familysearch: 'L2YX-JG9',
+        findagrave: '36924467',
+    },
+    10: {
+        first: 'Elmer',
+        middle: 'Martin',
+        surname: 'Helm',
+        maiden: '',
+        ancestry: '',
+        familysearch: 'L2YX-JK5',
+        findagrave: '71723715',
+    },
+    11: {
+        first: 'Marian',
+        middle: 'Louise',
+        surname: 'Helm',
+        maiden: 'Hoffman',
+        ancestry: '',
+        familysearch: 'L2YX-JL5',
+        findagrave: '71723742',
+    },
+    12: {
+        first: 'Otis',
+        middle: 'Lavern',
+        surname: 'Chatfield',
+        maiden: '',
+        ancestry: '',
+        familysearch: 'LL46-YTZ',
+        findagrave: '161872913',
+    },
+    13: {
+        first: 'Shirley',
+        middle: 'Eileen',
+        surname: 'Chatfield',
+        maiden: 'Howard',
+        ancestry: '',
+        familysearch: 'L2YL-YXS',
+        findagrave: '175288090',
+    },
+    14: {
+        first: 'John',
+        middle: 'Kenneth',
+        surname: 'MacKenzie',
+        maiden: '',
+        ancestry: '',
+        familysearch: 'L2YX-JLC',
+        findagrave: '175273157',
+    },
+    15: {
+        first: 'Alice',
+        middle: 'Virginia',
+        surname: 'MacKenzie',
+        maiden: 'Dierkens',
+        ancestry: '',
+        familysearch: 'L2YX-JGC',
+        findagrave: '175273302',
+    },
 };
 
 export let active;
@@ -159,17 +231,21 @@ export function getDefaultUrl(website) {
 export function getIdFromUrl(url) {
     let id;
 
-    if (url.includes('ancestry')) { id = url.match(/\/person\/(\d+)\//) ? url.match(/\/person\/(\d+)\//)[1] : src.ancestry.defaultUrl; }
-    if (url.includes('familysearch')) { id = url.match(/([^/]+)$/) ? url.match(/([^/]+)$/)[1] : src.familysearch.defaultUrl; }
-    if (url.includes('findagrave')) { id = url.match(/\/(\d+)\//) ? url.match(/\/(\d+)\//)[1] : src.findagrave.defaultUrl; }
+    if (url) {
+        if (url.includes('ancestry')) { id = url.match(/\/person\/(\d+)\//) ? url.match(/\/person\/(\d+)\//)[1] : src.ancestry.defaultUrl; }
+        if (url.includes('familysearch')) { id = url.match(/([^/]+)$/) ? url.match(/([^/]+)$/)[1] : src.familysearch.defaultUrl; }
+        if (url.includes('findagrave')) { id = url.match(/\/(\d+)\//) ? url.match(/\/(\d+)\//)[1] : src.findagrave.defaultUrl; }
+    }
 
     return id;
 }
 
 // Returns only the domain name from a url.
 export function getDomainName(url) {
-    const temp = url.slice(url.indexOf('www.') + 4, url.length);
-    return temp.slice(0, temp.indexOf('.')); // Optimize with a regex later?
+    if (url) {
+        const temp = url.slice(url.indexOf('www.') + 4, url.length);
+        return temp.slice(0, temp.indexOf('.')); // Optimize with a regex later?
+    }
 }
 
 // DATABASE FUNCTIONS
@@ -221,7 +297,6 @@ export function setActive(id) {
         active = findById(id) !== undefined ? findById(id) : active;
     } else if (searchByName(id).length >= 1) {
         active = searchByName(id)[0];
-        console.log(id);
     }
 }
 
@@ -338,7 +413,8 @@ export function searchByName(name) {
 
         if (firstname !== undefined) {
             people = Object.keys(people)
-                .filter((id) => people[id].surname.toLowerCase() === surname)
+                .filter((id) => people[id].surname.toLowerCase() === surname
+                || people[id].maiden.toLowerCase() === surname)
                 .filter((id) => people[id].first.toLowerCase().startsWith(firstname))
                 .map((id) => people[id]);
         }
@@ -348,9 +424,11 @@ export function searchByName(name) {
         //         .filter((id) => people[id].middle.toLowerCase().startsWith(middlename))
         //         .map((id) => people[id]);
         // }
+    } else {
+        people = Object.keys(ids)
+            .filter((id) => ids[id])
+            .map((id) => ids[id]);
     }
 
     return people;
 }
-
-console.log(searchByName('chatfield, r'));

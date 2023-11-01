@@ -32,6 +32,36 @@ search.addEventListener('submit', (e) => {
     input.value = '';
 });
 
+// If searchbar is in focus, show results menu.
+input.addEventListener("focus", (e) => {
+    const results = document.querySelector("#results");
+    results.style.display = "block";
+
+    // Updates results with relevant query data.
+    input.addEventListener("input", (e) => {
+        let people = data.searchByName(input.value);
+        console.log(people)
+        results.innerHTML = ''; //Remove all children from results.
+
+        if (people.length >= 1) {
+            people.forEach(id => {
+                let person = document.createElement("li");
+                let birthSurname = id.maiden.toLowerCase().startsWith(input.value.toLowerCase()) && id.maiden.length >= 1 ? id.maiden : id.surname
+                person.innerText = `${birthSurname}, ${id.first} ${id.middle}`;
+                results.appendChild(person);
+            })
+        }
+    });
+
+
+
+    // If searchbar loses focus, hide results menu.
+    input.addEventListener("blur", (e) => {
+        results.style.display = "none";
+        input.value = "";
+    });
+});
+
 // Query the url for the active tab. If found, return the url. Otherwise return undefined.
 async function getUrl() {
     try {
