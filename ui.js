@@ -48,6 +48,15 @@ export function openNewTab(url) {
     return window.open(url, '_blank').focus();
 }
 
+// Updates the info bar with information about the active person.
+export function renderActive(element) {
+    updateName(data.getFullName(data.active), element.querySelector('#info').querySelector('#name'));
+    updateId(data.findId(data.active), element.querySelector('#info').querySelector('#id'));
+    updateLifespan(data.getBirthYear(data.active), data.getDeathYear(data.active), element.querySelector('#info').querySelector('#lifespan'));
+    updateLinks(data.getAllLinks(data.active), element.querySelector('#quicklinks'));
+}
+
+// Creates filtered search results based on which people meet the input criteria.
 export function filterResults(people, search, element) {
     if (people.length >= 1) {
         people.forEach((id) => {
@@ -57,8 +66,9 @@ export function filterResults(people, search, element) {
             // Add an onclick event listener for the element.
             person.addEventListener('click', () => {
                 data.setActive(person.getAttribute('id')); // Set the element id to the person id.
+                renderActive(element.parentElement); // Render active passing in body element.
                 person.parentElement.style.display = 'none'; // Hide the results menu.
-                person.parentElement.innerHTML = ''; // Clear the results.
+                person.parentElement.innerHTML = ''; // Clear the results menu.
             });
 
             const birthSurname = id.maiden.toLowerCase().startsWith(search.toLowerCase())

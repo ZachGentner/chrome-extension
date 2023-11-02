@@ -38,6 +38,7 @@ search.addEventListener('submit', (e) => {
 input.addEventListener("focus", (e) => {
     const results = document.querySelector("#results"); // Query the results element.
     results.style.display = "block"; // Display the search results element.
+    results.scrollTo(0,0); // Returns scrollbar to the top of the list.
     ui.filterResults(data.searchByName(input.value), "", results); // Filter the results based on an empty string.
 
     // Updates results with relevant query data.
@@ -49,12 +50,11 @@ input.addEventListener("focus", (e) => {
     // Load an ancestor as active if they're clicked from results menu.
 
     // // If searchbar loses focus, hide results menu.
-    input.addEventListener("blur", (e) => {
-        input.value = ""; // Clear the search bar.
-        results.innerHTML = ""; // Clear the results.
-        results.style.display = "none";
-        console.log(e.target);
-    });
+    // input.addEventListener("blur", (e) => {
+    //     input.value = ""; // Clear the search bar.
+    //     results.innerHTML = ""; // Clear the results.
+    //     results.style.display = "none";
+    // });
 });
 
 // Query the url for the active tab. If found, return the url. Otherwise return undefined.
