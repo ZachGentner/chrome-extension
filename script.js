@@ -50,11 +50,13 @@ input.addEventListener("focus", (e) => {
     // Load an ancestor as active if they're clicked from results menu.
 
     // // If searchbar loses focus, hide results menu.
-    // input.addEventListener("blur", (e) => {
-    //     input.value = ""; // Clear the search bar.
-    //     results.innerHTML = ""; // Clear the results.
-    //     results.style.display = "none";
-    // });
+    input.addEventListener("blur", (e) => {
+        setTimeout(() => {
+            results.innerHTML = ""; // Clear the results.
+            input.value = ""; // Clear the search bar.
+            results.style.display = "none"
+        }, '150')
+    });
 });
 
 // Query the url for the active tab. If found, return the url. Otherwise return undefined.

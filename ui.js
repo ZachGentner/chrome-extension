@@ -68,6 +68,7 @@ export function filterResults(people, search, element) {
                 data.setActive(person.getAttribute('id')); // Set the element id to the person id.
                 renderActive(element.parentElement); // Render active passing in body element.
                 person.parentElement.style.display = 'none'; // Hide the results menu.
+                person.parentElement.parentElement.querySelector('#input').value = '';
                 person.parentElement.innerHTML = ''; // Clear the results menu.
             });
 
