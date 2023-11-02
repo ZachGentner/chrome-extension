@@ -52,10 +52,13 @@ export function filterResults(people, search, element) {
     if (people.length >= 1) {
         people.forEach((id) => {
             const person = document.createElement('li'); // Create a new list item for the person.
+            person.setAttribute('id', data.findId(id));
 
             // Add an onclick event listener for the element.
             person.addEventListener('click', () => {
-                console.log(person.innerText);
+                data.setActive(person.getAttribute('id')); // Set the element id to the person id.
+                person.parentElement.style.display = 'none'; // Hide the results menu.
+                person.parentElement.innerHTML = ''; // Clear the results.
             });
 
             const birthSurname = id.maiden.toLowerCase().startsWith(search.toLowerCase())

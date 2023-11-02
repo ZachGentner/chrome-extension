@@ -38,7 +38,7 @@ search.addEventListener('submit', (e) => {
 input.addEventListener("focus", (e) => {
     const results = document.querySelector("#results"); // Query the results element.
     results.style.display = "block"; // Display the search results element.
-    ui.filterResults(data.searchByName(input.value), "", results) // Filter the results based on an empty string.
+    ui.filterResults(data.searchByName(input.value), "", results); // Filter the results based on an empty string.
 
     // Updates results with relevant query data.
     input.addEventListener("input", (e) => {
@@ -50,8 +50,10 @@ input.addEventListener("focus", (e) => {
 
     // // If searchbar loses focus, hide results menu.
     input.addEventListener("blur", (e) => {
+        input.value = ""; // Clear the search bar.
+        results.innerHTML = ""; // Clear the results.
         results.style.display = "none";
-        input.value = "";
+        console.log(e.target);
     });
 });
 
