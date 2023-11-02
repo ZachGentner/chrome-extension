@@ -30,32 +30,25 @@ search.addEventListener('submit', (e) => {
     data.setActive(input.value);
     renderActive(document.querySelector('body'));
     input.value = '';
+    results.innerHTML = '';
+    ui.filterResults(data.searchByName(input.value), "", results) // Filter the results based on an empty string.
 });
 
 // If searchbar is in focus, show results menu.
 input.addEventListener("focus", (e) => {
-    const results = document.querySelector("#results");
-    results.style.display = "block";
+    const results = document.querySelector("#results"); // Query the results element.
+    results.style.display = "block"; // Display the search results element.
+    ui.filterResults(data.searchByName(input.value), "", results) // Filter the results based on an empty string.
 
     // Updates results with relevant query data.
     input.addEventListener("input", (e) => {
-        let people = data.searchByName(input.value);
-        console.log(people)
-        results.innerHTML = ''; //Remove all children from results.
-
-        if (people.length >= 1) {
-            people.forEach(id => {
-                let person = document.createElement("li");
-                let birthSurname = id.maiden.toLowerCase().startsWith(input.value.toLowerCase()) && id.maiden.length >= 1 ? id.maiden : id.surname
-                person.innerText = `${birthSurname}, ${id.first} ${id.middle}`;
-                results.appendChild(person);
-            })
-        }
+        results.innerHTML = ''; // Remove all children from results.
+        ui.filterResults(data.searchByName(input.value), input.value, results); // Filter results displayed.
     });
 
+    // Load an ancestor as active if they're clicked from results menu.
 
-
-    // If searchbar loses focus, hide results menu.
+    // // If searchbar loses focus, hide results menu.
     input.addEventListener("blur", (e) => {
         results.style.display = "none";
         input.value = "";

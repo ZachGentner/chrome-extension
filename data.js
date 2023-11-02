@@ -249,10 +249,14 @@ export function getDomainName(url) {
 }
 
 // DATABASE FUNCTIONS
-// export function findByName(name) {
+// export function findByName(surname, firstname) {
 //     let person;
 //     Object.keys(ids).forEach((id) => {
-//         if (ids[id].name === name) { person = ids[id]; }
+//         if (ids[id].surname.toLowerCase() === surname.toLowerCase()) {
+//             if (ids[id].firstname.toLowerCase() === firstname.toLowerCase()) {
+//                 person = ids[id];
+//             }
+//         }
 //     });
 //     return person;
 // }

@@ -1,3 +1,5 @@
+import * as data from './data.js';
+
 export function updateName(fullName, element) {
     return element.innerText = fullName;
 }
@@ -44,6 +46,24 @@ export function updateLinks(links, element) {
 // Opens a new tab with the url passed as an argument.
 export function openNewTab(url) {
     return window.open(url, '_blank').focus();
+}
+
+export function filterResults(people, search, element) {
+    if (people.length >= 1) {
+        people.forEach((id) => {
+            const person = document.createElement('li'); // Create a new list item for the person.
+
+            // Add an onclick event listener for the element.
+            person.addEventListener('click', () => {
+                console.log(person.innerText);
+            });
+
+            const birthSurname = id.maiden.toLowerCase().startsWith(search.toLowerCase())
+            && id.maiden.length >= 1 ? id.maiden : id.surname;
+            person.innerText = `${birthSurname}, ${id.first} ${id.middle}`;
+            element.appendChild(person);
+        });
+    }
 }
 
 // function updatePhoto(photoUrl, photoFrame) {
