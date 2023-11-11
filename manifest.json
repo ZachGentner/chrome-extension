@@ -1,12 +1,12 @@
 {
-  "name": "Genealogy Helper",
+  "name": "Rootwise",
   "version": "1.0.0",
-  "description": "An extension that allows for seamless web navigation between the numerous genealogical sites.",
+  "description": "Rootwise allows genealogy researchers to quickly navigate to different web sources for each ancestor.",
   "manifest_version": 3,
   "author": "Zach Gentner",
   "action": {
     "default_popup": "index.html",
-    "default_title": "Genealogy",
+    "default_title": "Rootwise",
     "default_icon": {
       "16": "img/favicon/favicon-16x16.png",
       "32": "img/favicon/favicon-32x32.png",
@@ -15,6 +15,10 @@
     }
   },
   "permissions": [
-    "activeTab"
-  ]
+    "activeTab",
+    "contextMenus"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }

@@ -81,6 +81,7 @@ a {
 }
 
 #lifespan {
+  margin-top: 2px;
   margin-left: 12px;
   text-align: left;
 }
@@ -160,6 +161,7 @@ a {
   border-radius: 5px;
   overflow: scroll;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 #results li {
