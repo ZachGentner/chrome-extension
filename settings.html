@@ -11,13 +11,24 @@
     />
   </head>
   <body>
-    <main style="display: flex; justify-content: space-between;">
-      <h1>Settings</h1>
-      <button id="settings" style="height: 30px">
-        <a class="link" href="./index.html">
-          <i class="fa-solid fa-house"></i>
-        </a>
-      </button>
+    <main>
+      <div class="flex-row">
+        <h1>Settings</h1>
+        <button style="height: 30px">
+          <a class="link" href="./index.html">
+            <i class="fa-solid fa-house"></i>
+          </a>
+        </button>
+      </div>
+
+      <div id="settings">
+        <ul>
+          <form action="submit">
+            <input type="checkbox" name="autoload" id="autoload">
+            <li style="margin-left: 6px;">Autoload</li>
+          </form>
+        </ul>
+      </div>
     </main>
   </body>
 </html>

@@ -148,9 +148,6 @@ a {
   border-radius: 3px;
 }
 
-#settings {
-}
-
 #results {
   display: none;
   height: 80px;
@@ -173,4 +170,22 @@ a {
 #results li:hover {
   background-color: var(--tertiary);
   border-radius: 5px;
+}
+
+#settings {
+  margin-top: 10px;
+}
+
+#settings form {
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+
+/* UTILITIES */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
