@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rootwise</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="img/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/src/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main>
+      <!-- INFORMATION -->
+      <div id="info" class="container">
+        <div id="profile">
+          <!-- <img src="https://gravatar.com/userimage/79746757/3c912a1d5fb907c633bfb0842725cf2a.jpeg?size=256" alt=""> -->
+          <i class="fa-regular fa-user fa-lg"></i>
+        </div>
+        <div style="flex-grow: 1">
+          <h1 id="name">Firstname M. Surname</h1>
+          <p id="lifespan">1800-1900</p>
+        </div>
+        <p id="id">ID:</p>
+      </div>
+
+      <!-- <div style="background-color: white; margin: -10px; display: flex; justify-content: center;">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div> -->
+
+      <!-- QUICKLINKS -->
+      <div id="quicklinks">
+        <button id="ancestry">
+          <a class="link" href="https://www.ancestry.com" target="_blank">
+            <img
+              src="/src/img/ancestry.svg"
+              alt="Ancestry.com quicklink icon"
+            />
+          </a>
+        </button>
+
+        <button id="familysearch">
+          <a class="link" href="https://www.familysearch.org" target="_blank">
+            <img
+              src="/src/img/familysearch.png"
+              alt="Familysearch.com quicklink icon"
+            />
+          </a>
+        </button>
+
+        <button id="findagrave">
+          <a class="link" href="https://www.findagrave.com" target="_blank">
+            <img
+              src="/src/img/findagrave.png"
+              alt="Findagrave.com quicklink button"
+            />
+          </a>
+        </button>
+      </div>
+
+      <!-- SEARCHBAR -->
+      <form id="search" action="submit">
+        <button id="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <input id="input" type="text" autocomplete="off" />
+      </form>
+      <ul id="results"></ul>
+
+      <!-- TOOLBAR -->
+      <div id="toolbar">
+        <!-- EDIT WILL ALLOW USERS TO MANUALLY EDIT AND SAVE DETAILS ABOUT THE ACTIVE ANCESTOR -->
+        <button id="edit" title="Edit">
+          <a class="link" href="index.html">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </a>
+        </button>
+
+        <!-- SOURCES WILL ALLOW USERS TO CLIP URLS AND ATTACH THEM TO ANCESTORS FOR FUTURE REFERENCE -->
+        <button id="sources" title="Sources">
+          <a class="link" href="index.html">
+            <i class="fa-solid fa-box-archive"></i>
+          </a>
+        </button>
+        <!-- PHOTOS WILL ALLOW USERS TO CLIP PHOTO URLS AND ATTACH THEM TO ANCESTORS FOR FUTURE REFERENCE -->
+        <button id="photos" title="Photos">
+          <a class="link" href="index.html">
+            <i class="fa-regular fa-image"></i>
+          </a>
+        </button>
+        <!-- TASKS WILL ALLOW USERS TO RECORD AND MANAGE TODO ITEMS FOR EACH ANCESTOR -->
+        <button id="tasks" title="Tasks">
+          <a class="link" href="index.html">
+            <i class="fa-solid fa-list-check"></i>
+          </a>
+        </button>
+        <!-- TASKS WILL ALLOW USERS TO RECORD AND MANAGE TODO ITEMS FOR EACH ANCESTOR -->
+        <button id="notes" title="Notes">
+          <a class="link" href="index.html">
+            <!-- <i class="fa-regular fa-note-sticky"></i> -->
+            <i class="fa-regular fa-clipboard"></i>
+          </a>
+        </button>
+        <!-- REPORTS WILL ALLOW USERS TO GENERATE MEANINGFUL DATA BASED ON THE INFORMATION CURRENTLY ENTERED FOR THEIR ANCESTORS -->
+        <button id="reports" title="Reports">
+          <a class="link" href="index.html">
+            <i class="fa-solid fa-chart-pie"></i>
+          </a>
+        </button>
+        <!-- WEBSEARCH WILL ALLOW USERS TO SEARCH NUMEROUS GENEALOGY WEBSITES FOR THE ACTIVE ANCESTOR WITH THE CLICK OF A BUTTON -->
+        <button id="websearch" title="Web Search">
+          <a class="link" href="">
+            <i class="fa-solid fa-globe"></i>
+          </a>
+        </button>
+        <!-- SETTINGS WILL ALLOW USERS TO CHANGE FUNCTIONALITY OF THE WEB UTILITY -->
+        <button id="settings" title="Settings">
+          <a class="link" href="./settings.html">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </button>
+        <!-- LOG OUT WILL ALLOW USERS TO SIGN OUT OF THE WEB APPLICATION AND RETURN TO THE SIGN IN MENU -->
+        <button id="logout" title="Logout">
+          <a class="link" href="signin.html">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </a>
+        </button>
+      </div>
+
+      <!-- <button id="test" style="margin: 12px; padding: 12px;">Click</button> -->
+    </main>
+
+    <script type="module" src="/src/scripts/script.js"></script>
+  </body>
+</html>
