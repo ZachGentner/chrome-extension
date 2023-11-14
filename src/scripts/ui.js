@@ -93,13 +93,15 @@ export function filterResults(people, search, element) {
         person.parentElement.innerHTML = ''; // Clear the results menu.
       });
 
-      const birthSurname =
-        id.maiden.toLowerCase().startsWith(search.toLowerCase()) &&
-        id.maiden.length >= 1
-          ? id.maiden
-          : id.surname;
-      person.innerText = `${birthSurname}, ${id.first} ${id.middle}`;
-      element.appendChild(person);
+      if (id.maiden !== undefined) {
+        const birthSurname =
+          id.maiden.toLowerCase().startsWith(search.toLowerCase()) &&
+          id.maiden.length >= 1
+            ? id.maiden
+            : id.surname;
+        person.innerText = `${birthSurname}, ${id.first} ${id.middle}`;
+        element.appendChild(person);
+      }
     });
   }
 }
