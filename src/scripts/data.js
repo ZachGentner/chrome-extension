@@ -27,7 +27,6 @@ const ids = {
     ancestry: '352320388648',
     familysearch: 'L2Y8-T2J',
     findagrave: '',
-    links: {},
   },
   2: {
     first: 'Todd',
