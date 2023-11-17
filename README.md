@@ -80,7 +80,7 @@
 ## About The Project
 
 <div align="center">
-  [![Product Name Screen Shot][product-screenshot]](https://repository-images.githubusercontent.com/699593070/9c9d9e25-3512-43cc-9154-7f53bdedef92)
+    <img src="https://github.com/zachgentner/rootwise/blob/main/src/img/product-screenshot.png" alt="Product Screenshot">
 </div>
 
 Rootwise is a Google Chrome extension that allows genealogy researchers to quickly navigate to different web sources for each ancestor.
