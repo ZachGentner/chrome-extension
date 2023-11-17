@@ -28,10 +28,10 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<!-- <div align="center">
-  <a href="https://github.com/zachgentner/tictactoe">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a> -->
+<div align="center">
+  <a href="https://github.com/zachgentner/rootwise">
+    <img src="https://repository-images.githubusercontent.com/699593070/9c9d9e25-3512-43cc-9154-7f53bdedef92" alt="Logo" width="80" height="80">
+  </a>
 
 <h3 align="center">Rootwise</h3>
 
@@ -182,7 +182,7 @@ Project Link: [https://github.com/zachgentner/rootwise](https://github.com/zachg
 [license-url]: https://github.com/zachgentner/tictactoe/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/zachgentner
-[product-screenshot]: https://repository-images.githubusercontent.com/699593070/9c9d9e25-3512-43cc-9154-7f53bdedef92
+[product-screenshot]: https://
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [HTML.com]: https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white
