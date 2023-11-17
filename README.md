@@ -125,11 +125,11 @@ Usage details will be updated once Rootwise reaches it's initial deployment.
 
 ## Roadmap
 
-- [ ] Add a navigation input to quickly switch back and forth between ancestors.
+- [x] Add a navigation input to quickly switch back and forth between ancestors.
 - [ ] Add settings page to customize usability of the web utility.
 - [ ] Add feature to import and parse gedcom files to automatically import ancestors.
 
-See the [open issues](https://github.com/zachgentner/tictactoe/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/zachgentner/rootwiseissues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -171,16 +171,16 @@ Project Link: [https://github.com/zachgentner/rootwise](https://github.com/zachg
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/zachgentner/tictactoe.svg?style=for-the-badge
-[contributors-url]: https://github.com/zachgentner/tictactoe/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/zachgentner/tictactoe.svg?style=for-the-badge
-[forks-url]: https://github.com/zachgentner/tictactoe/network/members
-[stars-shield]: https://img.shields.io/github/stars/zachgentner/tictactoe.svg?style=for-the-badge
-[stars-url]: https://github.com/zachgentner/tictactoe/stargazers
-[issues-shield]: https://img.shields.io/github/issues/zachgentner/tictactoe.svg?style=for-the-badge
-[issues-url]: https://github.com/zachgentner/tictactoe/issues
-[license-shield]: https://img.shields.io/github/license/zachgentner/tictactoe.svg?style=for-the-badge
-[license-url]: https://github.com/zachgentner/tictactoe/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/zachgentner/rootwise.svg?style=for-the-badge
+[contributors-url]: https://github.com/zachgentner/rootwise/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/zachgentner/rootwise.svg?style=for-the-badge
+[forks-url]: https://github.com/zachgentner/rootwise/network/members
+[stars-shield]: https://img.shields.io/github/stars/zachgentner/rootwise.svg?style=for-the-badge
+[stars-url]: https://github.com/zachgentner/rootwise/stargazers
+[issues-shield]: https://img.shields.io/github/issues/zachgentner/rootwise.svg?style=for-the-badge
+[issues-url]: https://github.com/zachgentner/rootwise/issues
+[license-shield]: https://img.shields.io/github/license/zachgentner/rootwise.svg?style=for-the-badge
+[license-url]: https://github.com/zachgentner/rootwise/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/zachgentner
 [product-screenshot]: https://github.com/zachgentner/rootwise/blob/main/src/img/product-screenshot.png
