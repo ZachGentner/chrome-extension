@@ -93,7 +93,7 @@ export function filterResults(people, search, element) {
         person.parentElement.innerHTML = ''; // Clear the results menu.
       });
 
-      if (id.maiden !== undefined) {
+      if (id.maiden !== undefined || id.maiden !== '') {
         const birthSurname =
           id.maiden.toLowerCase().startsWith(search.toLowerCase()) &&
           id.maiden.length >= 1
