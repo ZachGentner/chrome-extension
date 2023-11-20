@@ -6,6 +6,7 @@
 import * as data from './data.js';
 import * as ui from './ui.js';
 import settings from '../settings.json' assert { type: 'json' };
+import * as person from './person.js';
 
 // VARIABLE DECLARATIONS
 const info = document.getElementById('info');
@@ -92,11 +93,11 @@ async function autoLoad() {
 }
 
 function renderActive() {
-  ui.updateName(data.getFullName(data.active), info.querySelector('#name'));
+  ui.updateName(data.active, info.querySelector('#name'));
   ui.updateId(data.findId(data.active), info.querySelector('#id'));
   ui.updateLifespan(
-    data.getBirthYear(data.active),
-    data.getDeathYear(data.active),
+    data.active.birth,
+    data.active.death,
     info.querySelector('#lifespan'),
   );
   ui.updateLinks(data.getAllLinks(data.active), quicklinks);

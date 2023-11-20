@@ -16,8 +16,8 @@ const src = {
   },
 };
 
-const ids = ancestors.gentner;
-console.log(Object.keys(ancestors));
+const { ids } = ancestors;
+// console.log(Object.keys(ancestors)); // How many imported elements there are.
 
 export let active;
 
@@ -174,79 +174,6 @@ export function setActive(id) {
   }
 }
 
-// NAME FUNCTIONS
-export function getFirstName(person) {
-  if (person.first) {
-    return person.first;
-  }
-  return undefined;
-}
-
-export function getMiddleName(person) {
-  if (person.middle) {
-    return person.middle;
-  }
-  return undefined;
-}
-
-export function getSurame(person) {
-  if (person.surname) {
-    return person.surname;
-  }
-  return undefined;
-}
-
-export function getMaidenName(person) {
-  if (person.maiden) {
-    return person.maiden;
-  }
-  return undefined;
-}
-
-export function getFullName(person) {
-  let name;
-
-  if (person !== undefined) {
-    const middleInitial = person.middle ? `${person.middle[0]}. ` : '';
-    const maidenName = person.maiden ? `(${person.maiden}) ` : '';
-
-    name = `${person.first} ${middleInitial}${maidenName}${person.surname}`;
-  }
-
-  return name;
-}
-
-// DATE FUNCTIONS
-export function getBirthYear(person) {
-  if (person.birth) {
-    return `${person.birth}`;
-  }
-  return undefined;
-}
-
-export function getDeathYear(person) {
-  if (person.death) {
-    return `${person.death}`;
-  }
-  return undefined;
-}
-
-export function getPhoto(person) {
-  if (person.photo !== '' && person.photo !== undefined) {
-    return person.photo;
-  }
-  return undefined;
-}
-
-// SEARCH FUNCTIONS
-// Add quick search options based on the current active ancestor for common genealogical websites.
-export function searchForebears(person) {
-  if (person.maiden !== '' && person.maiden !== undefined) {
-    return `https://forebears.io/surnames/${person.maiden}`;
-  }
-  return `https://forebears.io/surnames/${person.surname}`;
-}
-
 export function reduceArray(key, value) {
   const people = [];
 
@@ -280,7 +207,8 @@ export function searchByName(name) {
       people = Object.keys(ids)
         .filter(
           (id) =>
-            ids[id].surname.toLowerCase().startsWith(surname) ||
+            (ids[id].surname &&
+              ids[id].surname.toLowerCase().startsWith(surname)) ||
             ids[id].maiden.toLowerCase().startsWith(surname),
         )
         .map((id) => ids[id]);

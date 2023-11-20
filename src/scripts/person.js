@@ -4,15 +4,14 @@ export default class Person {
   middle;
   maiden;
   surname;
-  // sex;
   birth;
   death;
   // photo;
   // links;
+  // notes;
   ancestry;
   familysearch;
   findagrave;
-  // notes;
   constructor() {
     this.first = undefined;
     this.middle = undefined;
@@ -26,26 +25,42 @@ export default class Person {
     // this.links = [];
     // this.notes = '';
   }
+  fullname() {
+    const firstName = this.first ? `${this.first} ` : '';
+    const middleInitial = this.middle ? `${this.middle[0]}. ` : '';
+    const maidenName = this.maiden ? `(${this.maiden}) ` : '';
+    const lastName = this.surname ? `${this.surname}` : '';
+
+    return `${firstName}${middleInitial}${maidenName}${lastName}`;
+  }
 }
 
 // const templatePerson = {
 //   meta: {
-//     links: [],
-//     notes: '',
-//     photo,
 //     ancestry,
 //     familysearch,
 //     findagrave,
+//     links: [],
+//     notes: '',
+//     photo,
 //   },
 //   name: {
 //     first,
 //     middle,
 //     maiden,
-//     last,
+//     surname,
 //     alias,
 //   },
-//   // BIRTH
-//   birthdate,
-//   // DEATH
-//   deathdate,
+//   birth: {
+//     date,
+//     place,
+//   },
+//   death: {
+//     date,
+//     place,
+//   },
+//   burial: {
+//     date,
+//     place,
+//   },
 // };

@@ -1,7 +1,12 @@
 import * as data from './data.js';
 
-export function updateName(fullName, element) {
-  return (element.innerText = fullName);
+export function updateName(person, element) {
+  const firstName = person.first ? `${person.first} ` : '';
+  const middleInitial = person.middle ? `${person.middle[0]}. ` : '';
+  const maidenName = person.maiden ? `(${person.maiden}) ` : '';
+  const lastName = person.surname ? `${person.surname}` : '';
+
+  element.innerText = `${firstName}${middleInitial}${maidenName}${lastName}`;
 }
 
 export function updateId(id, element) {
@@ -13,8 +18,8 @@ export function updateLifespan(birth, death, element) {
     return (element.innerText = 'No dates');
   }
 
-  const birthYear = birth != undefined ? birth : '';
-  const deathYear = death != undefined ? death : '';
+  const birthYear = birth !== undefined ? birth : '';
+  const deathYear = death !== undefined ? death : '';
 
   return (element.innerText = `${birthYear} - ${deathYear}`);
 }
@@ -59,7 +64,7 @@ export function openNewTab(url) {
 // Updates the info bar with information about the active person.
 export function renderActive(element) {
   updateName(
-    data.getFullName(data.active),
+    data.active,
     element.querySelector('#info').querySelector('#name'),
   );
   updateId(
@@ -67,8 +72,8 @@ export function renderActive(element) {
     element.querySelector('#info').querySelector('#id'),
   );
   updateLifespan(
-    data.getBirthYear(data.active),
-    data.getDeathYear(data.active),
+    data.active.birth,
+    data.active.death,
     element.querySelector('#info').querySelector('#lifespan'),
   );
   updateLinks(
@@ -99,7 +104,8 @@ export function filterResults(people, search, element) {
           id.maiden.length >= 1
             ? id.maiden
             : id.surname;
-        person.innerText = `${birthSurname}, ${id.first} ${id.middle}`;
+        let middlename = id.middle ? id.middle : ''; // Only add middlename if it exists
+        person.innerText = `${birthSurname}, ${id.first} ${middlename}`;
         element.appendChild(person);
       }
     });

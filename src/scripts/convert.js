@@ -78,6 +78,9 @@ fileArr.forEach((line, index) => {
     if (line.match(FSID)) {
       person.familysearch = line.slice(8, line.length);
     }
+
+    // MAIDEN NAME
+    person.maiden = '';
   }
 });
 
