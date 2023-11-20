@@ -84,7 +84,7 @@ fileArr.forEach((line, index) => {
 // Converts the stringified data in the file into a javascript object for manipulation.
 export function openFile() {
   return JSON.parse(
-    fs.readFileSync('dev/ancestors.json', 'utf8', (err, data) => {
+    fs.readFileSync('./src/ancestors.json', 'utf8', (err, data) => {
       if (err) throw err;
       return data;
     }),
@@ -93,13 +93,13 @@ export function openFile() {
 
 // Converts the current ancestors object into a string for persistent storage and retrieval.
 export function saveFile() {
-  fs.writeFile('dev/ancestors.json', JSON.stringify(file), (err) => {
+  fs.writeFile('./src/ancestors.json', JSON.stringify(people), (err) => {
     if (err) throw err;
   });
 }
 
-let test = openFile();
-console.log(test);
+// console.log(people);
+saveFile();
 
 // PRINT FIRST 10 PEOPLE IN DATABASE
 // for (let i = 0; i < 10; i++) {
