@@ -1,5 +1,6 @@
 // For converting GEDCOM files into JSON.
 import * as fs from 'fs';
+import * as forms from './forms.js';
 import Person from './person.js';
 
 // FILE VARIABLES
@@ -81,6 +82,9 @@ fileArr.forEach((line, index) => {
 
     // MAIDEN NAME
     person.maiden = '';
+
+    // FIND A GRAVE
+    person.findagrave = ''; // Necessary for current code
   }
 });
 

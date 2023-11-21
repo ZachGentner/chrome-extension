@@ -47,8 +47,10 @@ export default class Person {
 //   name: {
 //     first,
 //     middle,
-//     maiden,
 //     surname,
+//     prefix, // Dr., Fr., Hon., Etc.
+//     suffix, // Jr., III, Etc.
+//     maiden,
 //     alias,
 //   },
 //   birth: {

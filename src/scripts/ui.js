@@ -6,7 +6,7 @@ export function updateName(person, element) {
   const maidenName = person.maiden ? `(${person.maiden}) ` : '';
   const lastName = person.surname ? `${person.surname}` : '';
 
-  element.innerText = `${firstName}${middleInitial}${maidenName}${lastName}`;
+  return (element.innerText = `${firstName}${middleInitial}${maidenName}${lastName}`);
 }
 
 export function updateId(id, element) {

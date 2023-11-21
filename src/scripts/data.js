@@ -16,7 +16,7 @@ const src = {
   },
 };
 
-const { ids } = ancestors;
+const ids = ancestors.gentner;
 // console.log(Object.keys(ancestors)); // How many imported elements there are.
 
 export let active;

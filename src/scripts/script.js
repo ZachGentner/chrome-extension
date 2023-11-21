@@ -1,14 +1,10 @@
-// Learn how to import and work with GEDCOM data.
-// Person data begins with '0@I*@ INDI', where * = index.
-// Person name follows immediately after. '1 NAME "firstname middlename /surname"/'
-// Allow users to select ancestor to load. Indexes are 0 for yourself, positives for parents on up and negatives for children and below.
-
+// IMPORTS
 import * as data from './data.js';
 import * as ui from './ui.js';
 import settings from '../settings.json' assert { type: 'json' };
 import * as person from './person.js';
 
-// VARIABLE DECLARATIONS
+// VARIABLES
 const info = document.getElementById('info');
 const quicklinks = document.getElementById('quicklinks');
 const search = document.getElementById('search');
@@ -60,6 +56,7 @@ input.addEventListener('focus', (e) => {
   });
 });
 
+// FUNCTIONS
 // Query the url for the active tab. If found, return the url. Otherwise return undefined.
 async function getUrl() {
   try {
