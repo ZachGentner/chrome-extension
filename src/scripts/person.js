@@ -2,8 +2,8 @@
 export default class Person {
   first;
   middle;
-  maiden;
   surname;
+  maiden;
   birth;
   death;
   // photo;
