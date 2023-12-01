@@ -17,6 +17,7 @@ const src = {
 };
 
 const ids = ancestors.gentner;
+localStorage.setItem('ancestors', JSON.stringify(ids)); // Store the ancestors in localstorage (Retrieve from here?)
 // console.log(Object.keys(ancestors)); // How many imported elements there are.
 
 export let active;
