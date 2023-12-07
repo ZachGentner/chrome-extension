@@ -347,6 +347,7 @@ export const gentner = {
   },
   32: {
     first: 'Stephen',
+    middle: '',
     maiden: '',
     surname: 'Gentner',
     birth: '1849',
@@ -357,6 +358,7 @@ export const gentner = {
   },
   33: {
     first: 'Barbara',
+    middle: '',
     maiden: 'Artman',
     surname: 'Gentner',
     birth: '1860',
@@ -367,6 +369,7 @@ export const gentner = {
   },
   34: {
     first: 'Frederick',
+    middle: '',
     maiden: '',
     surname: 'Gottschalk',
     birth: '1865',
@@ -377,6 +380,7 @@ export const gentner = {
   },
   35: {
     first: 'Freda',
+    middle: '',
     maiden: 'Baer',
     surname: 'Gottschalk',
     birth: '1868',
@@ -387,6 +391,7 @@ export const gentner = {
   },
   36: {
     first: 'Edward',
+    middle: '',
     maiden: '',
     surname: 'Willis',
     birth: '1868',
@@ -397,6 +402,7 @@ export const gentner = {
   },
   37: {
     first: 'Sarah',
+    middle: '',
     maiden: 'Adams',
     surname: 'Willis',
     birth: '1839',
@@ -407,6 +413,7 @@ export const gentner = {
   },
   38: {
     first: 'Angus',
+    middle: '',
     maiden: '',
     surname: 'MacDonald',
     birth: '1846',
@@ -417,6 +424,7 @@ export const gentner = {
   },
   39: {
     first: 'Annie',
+    middle: '',
     maiden: 'MacLean',
     surname: 'MacDonald',
     birth: '1859',
@@ -427,6 +435,7 @@ export const gentner = {
   },
   40: {
     first: 'John',
+    middle: '',
     maiden: '',
     surname: 'Helm',
     birth: '1848',
@@ -437,6 +446,7 @@ export const gentner = {
   },
   41: {
     first: 'Henrietta',
+    middle: '',
     maiden: 'Yarbrough',
     surname: 'Helm',
     birth: '1854',
@@ -447,6 +457,7 @@ export const gentner = {
   },
   42: {
     first: 'Martin',
+    middle: '',
     maiden: '',
     surname: 'Fritsch',
     birth: '1848',
@@ -456,7 +467,8 @@ export const gentner = {
     findagrave: '110655202',
   },
   43: {
-    first: 'Martin',
+    first: 'Margaret',
+    middle: '',
     maiden: 'Friedhoff',
     surname: 'Fritsch',
     birth: '1848',
@@ -465,8 +477,28 @@ export const gentner = {
     familysearch: 'GS3B-VSD',
     findagrave: '110655098',
   },
-  // 44: {},
-  // 45: {},
+  44: {
+    first: 'Malter',
+    middle: 'D.',
+    maiden: '',
+    surname: 'Hoffman',
+    birth: '1856',
+    death: '1927',
+    ancestry: '',
+    familysearch: 'LVY6-HT4',
+    findagrave: '169440019',
+  },
+  45: {
+    first: 'Amelia',
+    middle: '',
+    maiden: 'Kodelmann',
+    surname: 'Hoffman',
+    birth: '1855',
+    death: '1925',
+    ancestry: '',
+    familysearch: 'LVY6-CML',
+    findagrave: '169440018',
+  },
   // 46: {},
   // 47: {},
   // 48: {},
