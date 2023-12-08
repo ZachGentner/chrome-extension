@@ -10,6 +10,10 @@ const quicklinks = document.getElementById('quicklinks');
 const search = document.getElementById('search');
 const input = document.getElementById('input');
 
+if (settings.autofocus) {
+  input.setAttribute('autofocus', '');
+}
+
 // TARGETS
 window.addEventListener('load', async () => {
   // If autoload is enabled, load the active ancestor. Else load the root ancestor.
