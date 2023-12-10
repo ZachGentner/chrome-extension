@@ -6,6 +6,11 @@ const src = {
     id: '178204157',
     root: '352320388648',
   },
+  myheritage: {
+    defaultUrl: 'https://www.myheritage.com',
+    id: '1220243522',
+    root: '2000002',
+  },
   familysearch: {
     defaultUrl: 'https://www.familysearch.org',
     id: 'L2Y8-T2J',
