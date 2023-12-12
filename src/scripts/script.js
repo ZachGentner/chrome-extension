@@ -9,6 +9,7 @@ const info = document.getElementById('info');
 const quicklinks = document.getElementById('quicklinks');
 const search = document.getElementById('search');
 const input = document.getElementById('input');
+const edit = document.getElementById('edit');
 
 if (settings.autofocus) {
   input.setAttribute('autofocus', '');
@@ -58,6 +59,10 @@ input.addEventListener('focus', (e) => {
       results.style.display = 'none';
     }, '150');
   });
+});
+
+edit.addEventListener('click', () => {
+  console.log('test');
 });
 
 // FUNCTIONS
