@@ -87,6 +87,13 @@ a {
   text-align: left;
 }
 
+#editMenu {
+  display: none;
+  background-color: red;
+  margin: -12px -10px 10px -10px;
+  padding: 10px;
+}
+
 #quicklinks {
   display: flex;
   flex-direction: row;

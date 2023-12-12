@@ -62,7 +62,12 @@ input.addEventListener('focus', (e) => {
 });
 
 edit.addEventListener('click', () => {
-  console.log('test');
+  const editMenu = document.querySelector('#editMenu');
+  if (editMenu.style.display === 'none') {
+    editMenu.style.display = 'block';
+  } else {
+    editMenu.style.display = 'none';
+  }
 });
 
 // FUNCTIONS
