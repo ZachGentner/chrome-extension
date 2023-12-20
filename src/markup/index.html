@@ -57,14 +57,76 @@
         </div> -->
 
       <!-- EDIT -->
-      <div id="editMenu">
-        <input type="text" id="nameInput" />
-        <input type="text" id="birthInput" />
-        <input type="text" id="deathInput" />
-        <input type="text" id="ancestryInput" />
-        <input type="text" id="findagraveInput" />
-        <input type="text" id="familysearchInput" />
-      </div>
+      <form id="editMenu">
+        <!-- NAME -->
+        <p style="color: white; font-size: 14px; font-weight: bold">Names</p>
+        <p style="color: white; font-size: 12px">Forenames</p>
+        <div>
+          <input
+            style="width: 50%"
+            type="text"
+            id="firstInput"
+            placeholder="First"
+          />
+          <input
+            style="width: 50%"
+            type="text"
+            id="middleInput"
+            placeholder="Middle"
+          />
+        </div>
+        <p style="color: white; font-size: 12px">Surnames</p>
+        <div>
+          <input
+            style="width: 50%"
+            type="text"
+            id="maidenInput"
+            placeholder="Maiden"
+          />
+          <input
+            style="width: 50%"
+            type="text"
+            id="surnameInput"
+            placeholder="Surname"
+          />
+        </div>
+
+        <!-- DATES -->
+        <p style="color: white; font-size: 14px; font-weight: bold">Dates</p>
+        <div>
+          <div style="display: flex; justify-content: center; width: 50%">
+            <p>Birth</p>
+            <input style="width: 100px" type="text" id="birthInput" />
+          </div>
+          <div style="display: flex; justify-content: center; width: 50%">
+            <p>Death</p>
+            <input style="width: 100px" type="text" id="deathInput" />
+          </div>
+        </div>
+
+        <!-- IDs -->
+        <p style="color: white; font-size: 14px; font-weight: bold">
+          ID Numbers
+        </p>
+        <div>
+          <p>ANCS</p>
+          <input type="text" id="ancestryInput" />
+        </div>
+        <div>
+          <p>FAMS</p>
+          <input type="text" id="familysearchInput" />
+        </div>
+        <div>
+          <p>FGRV</p>
+          <input type="text" id="findagraveInput" />
+        </div>
+        <div>
+          <p>MHTG</p>
+          <input type="text" id="myheritageInput" />
+        </div>
+
+        <button id="saveEdits">Save</button>
+      </form>
 
       <!-- QUICKLINKS -->
       <div id="quicklinks">
@@ -124,7 +186,7 @@
       <!-- TOOLBAR -->
       <div id="toolbar">
         <!-- EDIT WILL ALLOW USERS TO MANUALLY EDIT AND SAVE DETAILS ABOUT THE ACTIVE ANCESTOR -->
-        <button id="edit" title="Add Person">
+        <button id="add" title="Add Person">
           <a class="link" href="index.html">
             <i class="fa-solid fa-user-plus"></i>
           </a>

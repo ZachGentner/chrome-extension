@@ -112,6 +112,14 @@ export function filterResults(people, search, element) {
   }
 }
 
+export function toggleElement(element) {
+  if (element.style.display === 'none') {
+    element.style.display = 'block';
+  } else {
+    element.style.display = 'none';
+  }
+}
+
 // function updatePhoto(photoUrl, photoFrame) {
 //     if (photoUrl !== '' && photoUrl !== undefined) {
 //         const img = document.createElement('img');

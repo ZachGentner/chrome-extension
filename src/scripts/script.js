@@ -10,6 +10,7 @@ const quicklinks = document.getElementById('quicklinks');
 const search = document.getElementById('search');
 const input = document.getElementById('input');
 const edit = document.getElementById('edit');
+const editMenu = document.getElementById('editMenu');
 
 if (settings.autofocus) {
   input.setAttribute('autofocus', '');
@@ -62,12 +63,13 @@ input.addEventListener('focus', (e) => {
 });
 
 edit.addEventListener('click', () => {
-  const editMenu = document.querySelector('#editMenu');
-  if (editMenu.style.display === 'none') {
-    editMenu.style.display = 'block';
-  } else {
-    editMenu.style.display = 'none';
-  }
+  ui.toggleElement(editMenu);
+  populateEditMenu();
+});
+
+document.getElementById('add').addEventListener('click', (e) => {
+  e.preventDefault();
+  ui.toggleElement(editMenu);
 });
 
 // FUNCTIONS
@@ -112,4 +114,16 @@ function renderActive() {
     info.querySelector('#lifespan'),
   );
   ui.updateLinks(data.getAllLinks(data.active), quicklinks);
+}
+
+function populateEditMenu() {
+  editMenu.querySelector('#firstInput').value = data.active.first;
+  editMenu.querySelector('#middleInput').value = data.active.middle;
+  editMenu.querySelector('#surnameInput').value = data.active.surname;
+  editMenu.querySelector('#birthInput').value = data.active.birth;
+  editMenu.querySelector('#deathInput').value = data.active.death;
+  editMenu.querySelector('#ancestryInput').value = data.active.ancestry;
+  editMenu.querySelector('#findagraveInput').value = data.active.findagrave;
+  editMenu.querySelector('#familysearchInput').value = data.active.familysearch;
+  editMenu.querySelector('#myheritageInput').value = data.active.myheritage;
 }

@@ -13,6 +13,11 @@
   --light: #e7eaf1;
 }
 
+::selection {
+  background: var(--tertiary);
+  /* color: white; */
+}
+
 :disabled {
   background-color: var(--dark);
   border-radius: 2px;
@@ -89,9 +94,34 @@ a {
 
 #editMenu {
   display: none;
-  background-color: red;
+  position: absolute;
+  z-index: 100000;
+  width: 300px;
+  user-select: none;
+  background-color: rgba(31, 35, 41, 0.75);
   margin: -12px -10px 10px -10px;
   padding: 10px;
+}
+
+#editMenu div {
+  display: flex;
+  align-items: center;
+  margin: 0 0 2px 0;
+}
+
+#editMenu div p {
+  font-size: 12px;
+  margin-right: 5px;
+  color: white;
+  min-width: 35px;
+}
+
+#editMenu div input {
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 5px;
+  /* flex-grow: 1; */
+  user-select: none;
 }
 
 #quicklinks {
