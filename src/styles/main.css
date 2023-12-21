@@ -227,3 +227,19 @@ a {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.btn {
+  text-align: center;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+  padding: 5px;
+  font-weight: bold;
+}
+
+#save-btn {
+  display: flex;
+  justify-content: center;
+  width: 125px;
+}

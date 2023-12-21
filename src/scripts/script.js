@@ -11,12 +11,14 @@ const search = document.getElementById('search');
 const input = document.getElementById('input');
 const edit = document.getElementById('edit');
 const editMenu = document.getElementById('editMenu');
+const saveBtn = document.getElementById('save-btn');
 
 if (settings.autofocus) {
   input.setAttribute('autofocus', '');
 }
 
 // TARGETS
+// Events triggered when the application is loaded.
 window.addEventListener('load', async () => {
   // If autoload is enabled, load the active ancestor. Else load the root ancestor.
   if (settings.autoload) {
@@ -26,6 +28,15 @@ window.addEventListener('load', async () => {
   }
 
   renderActive(); //Render the data of the active ancestor.
+});
+
+//Universal keydown events.
+document.addEventListener('keydown', (e) => {
+  if (editMenu.style.display !== 'none') {
+    if (e.key === 'Escape') {
+      ui.toggleElement(editMenu);
+    }
+  }
 });
 
 search.addEventListener('submit', (e) => {
@@ -69,6 +80,10 @@ edit.addEventListener('click', () => {
 
 document.getElementById('add').addEventListener('click', (e) => {
   e.preventDefault();
+  ui.toggleElement(editMenu);
+});
+
+saveBtn.addEventListener('click', () => {
   ui.toggleElement(editMenu);
 });
 
