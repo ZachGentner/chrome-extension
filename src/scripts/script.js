@@ -32,6 +32,7 @@ window.addEventListener('load', async () => {
 
 //Universal keydown events.
 document.addEventListener('keydown', (e) => {
+  //Close the edit menu if escape is pressed.
   if (editMenu.style.display !== 'none') {
     if (e.key === 'Escape') {
       ui.toggleElement(editMenu);

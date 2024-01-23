@@ -43,6 +43,13 @@ export function updateLinks(links, element) {
     element.querySelector('#familysearch').querySelector('a').href =
       links.familysearch.url;
     element.querySelector('#familysearch').disabled = false;
+    element
+      .querySelector('#fstree')
+      .querySelector(
+        'a',
+      ).href = `https://www.familysearch.org/tree/pedigree/fanchart/${data.getIdFromUrl(
+      links.familysearch.url,
+    )}`;
   }
 
   if (links.findagrave.url === undefined) {
